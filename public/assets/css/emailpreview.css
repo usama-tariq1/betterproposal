@@ -1,0 +1,59 @@
+.emailpreview .title {
+  text-align: center;
+  width: fit-content;
+  color: white;
+  font-size: 14px;
+  padding: 7px 25px;
+  background-color: #494C54;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.emailpreview .viewholder .view {
+  border: 8px solid #7B8290;
+  border-radius: 7px;
+  padding: 20px;
+}
+
+.emailpreview .viewholder .view .table {
+  width: 100%;
+  outline: none;
+}
+
+.emailpreview .viewholder .view .table tr {
+  border: 0px;
+}
+
+.emailpreview .viewholder .view .table tr td {
+  border: 0px;
+}
+
+.emailpreview .viewholder .view .table tr td .bodyholder {
+  border: 1px solid lightgray;
+  border-radius: 7px;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.emailpreview .viewholder .view .table tr td .bodyholder .emailmsg {
+  font-size: 18px;
+}
+
+.emailpreview .viewholder .view .table tr td .bodyholder .emailbutton {
+  display: block;
+  width: fit-content;
+  background-color: #21252F;
+  text-align: center;
+  color: #FFF;
+  padding-top: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  border-radius: 6px;
+  margin-top: 25px;
+  font-size: 17px;
+  text-transform: uppercase;
+}
+/*# sourceMappingURL=emailpreview.css.map */

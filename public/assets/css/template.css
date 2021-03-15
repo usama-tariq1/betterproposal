@@ -1,0 +1,991 @@
+body {
+  background-color: white !important;
+}
+
+.templateholder .template {
+  padding: 10px;
+  background-color: white;
+  height: auto;
+}
+
+.templateholder .template .previewrender {
+  display: none;
+}
+
+.templateholder .template .widgetholder, .templateholder .template .previewrender {
+  padding: 10px;
+}
+
+.templateholder .template .widgetholder .sectionblock .text-block, .templateholder .template .previewrender .sectionblock .text-block {
+  display: flex;
+}
+
+.templateholder .template .widgetholder .sectionblock .text-block .sidemenu, .templateholder .template .previewrender .sectionblock .text-block .sidemenu {
+  color: gray;
+  width: 10%;
+}
+
+.templateholder .template .widgetholder .sectionblock .text-block .sidemenu .tooltip-box, .templateholder .template .previewrender .sectionblock .text-block .sidemenu .tooltip-box {
+  color: black;
+  width: fit-content;
+  position: absolute;
+  left: 10%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.541);
+  backdrop-filter: blur(2px);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 45px 45px;
+  grid-template-rows: 45px 45px;
+  grid-gap: 10px;
+  z-index: 200;
+  margin-top: 10px;
+}
+
+.templateholder .template .widgetholder .sectionblock .text-block .sidemenu .tooltip-box .tool, .templateholder .template .previewrender .sectionblock .text-block .sidemenu .tooltip-box .tool {
+  margin: 0px 8px;
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  color: black;
+  background-color: #f1f1f1;
+  box-shadow: 0px 0px 5px 0px #b1b1b1;
+  cursor: pointer;
+}
+
+.templateholder .template .widgetholder .sectionblock .text-block .sidemenu .tooltip-box .tool i, .templateholder .template .previewrender .sectionblock .text-block .sidemenu .tooltip-box .tool i {
+  font-size: 20px;
+  position: relative;
+  color: gray;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.templateholder .template .widgetholder .sectionblock .text-block .sidemenu .tooltip-box .tool:hover, .templateholder .template .previewrender .sectionblock .text-block .sidemenu .tooltip-box .tool:hover {
+  background-color: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .text-block .sidemenu .tooltip-box .tool:hover i, .templateholder .template .previewrender .sectionblock .text-block .sidemenu .tooltip-box .tool:hover i {
+  color: black;
+}
+
+.templateholder .template .widgetholder .sectionblock .text-block .sidemenu .tooltip-box, .templateholder .template .previewrender .sectionblock .text-block .sidemenu .tooltip-box {
+  display: none;
+}
+
+.templateholder .template .widgetholder .sectionblock .text-block .sidemenu:hover .tooltip-box, .templateholder .template .previewrender .sectionblock .text-block .sidemenu:hover .tooltip-box {
+  display: grid;
+}
+
+.templateholder .template .widgetholder .sectionblock .text-block .sidemenu i, .templateholder .template .previewrender .sectionblock .text-block .sidemenu i {
+  font-size: 20px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.templateholder .template .widgetholder .sectionblock .text-block .widgetbody, .templateholder .template .previewrender .sectionblock .text-block .widgetbody {
+  width: 89%;
+}
+
+.templateholder .template .widgetholder .sectionblock .text-block .widgetbody .title, .templateholder .template .previewrender .sectionblock .text-block .widgetbody .title {
+  font-size: 40px;
+}
+
+.templateholder .template .widgetholder .sectionblock .text-block .widgetbody .body, .templateholder .template .previewrender .sectionblock .text-block .widgetbody .body {
+  font-size: 28px;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block, .templateholder .template .previewrender .sectionblock .signature-block {
+  margin-top: 20px;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .tooltip-tab, .templateholder .template .previewrender .sectionblock .signature-block .tooltip-tab {
+  color: black;
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.541);
+  backdrop-filter: blur(2px);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 200;
+  margin-top: 10px;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .tooltip-tab .tool, .templateholder .template .previewrender .sectionblock .signature-block .tooltip-tab .tool {
+  margin: 0px 8px;
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  color: black;
+  background-color: #f1f1f1;
+  box-shadow: 0px 0px 5px 0px #b1b1b1;
+  cursor: pointer;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .tooltip-tab .tool .color, .templateholder .template .previewrender .sectionblock .signature-block .tooltip-tab .tool .color {
+  border: 0px;
+  border: none;
+  background: none;
+  width: 40px;
+  height: 40px;
+  margin-top: -30px;
+  position: relative;
+  top: 19px;
+  left: 3px;
+  border: 1px solid white;
+  border-radius: 8px;
+  background: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .tooltip-tab .tool i, .templateholder .template .previewrender .sectionblock .signature-block .tooltip-tab .tool i {
+  font-size: 20px;
+  position: relative;
+  color: gray;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .tooltip-tab .tool:hover, .templateholder .template .previewrender .sectionblock .signature-block .tooltip-tab .tool:hover {
+  background-color: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .tooltip-tab .tool:hover i, .templateholder .template .previewrender .sectionblock .signature-block .tooltip-tab .tool:hover i {
+  color: black;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .tooltip-tab, .templateholder .template .previewrender .sectionblock .signature-block .tooltip-tab {
+  display: none;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block:hover .tooltip-tab, .templateholder .template .previewrender .sectionblock .signature-block:hover .tooltip-tab {
+  display: flex;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .view, .templateholder .template .previewrender .sectionblock .signature-block .view {
+  margin-top: 25px;
+  padding-top: 81px;
+  border: 8px solid lightgray;
+  border-radius: 8px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .view .agreementline, .templateholder .template .previewrender .sectionblock .signature-block .view .agreementline {
+  color: black;
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .view .tabswitch, .templateholder .template .previewrender .sectionblock .signature-block .view .tabswitch {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  align-content: space-evenly;
+  justify-content: space-evenly;
+  margin-bottom: 5px;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .view .tabswitch .tab, .templateholder .template .previewrender .sectionblock .signature-block .view .tabswitch .tab {
+  padding: 10px;
+  background: white;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  width: 50%;
+  text-align: center;
+  color: black;
+  opacity: 1;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .view .tabswitch .tab:hover, .templateholder .template .previewrender .sectionblock .signature-block .view .tabswitch .tab:hover {
+  background-color: #777777;
+  color: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .view .tabswitch .active, .templateholder .template .previewrender .sectionblock .signature-block .view .tabswitch .active {
+  background-color: #777777;
+  color: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .view .canvas, .templateholder .template .previewrender .sectionblock .signature-block .view .canvas {
+  border: 1px solid #dddddd;
+  touch-action: none;
+  width: 70%;
+  height: 250px;
+  margin: 0 auto;
+  display: block;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .view .signatureholder, .templateholder .template .previewrender .sectionblock .signature-block .view .signatureholder {
+  width: 70%;
+  margin: 0 auto;
+  padding: 20px;
+  height: 250px;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  display: none;
+  margin-bottom: 20px;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .view .signatureholder .digitalsignature, .templateholder .template .previewrender .sectionblock .signature-block .view .signatureholder .digitalsignature {
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .view .control, .templateholder .template .previewrender .sectionblock .signature-block .view .control {
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .view .control .accept:hover, .templateholder .template .previewrender .sectionblock .signature-block .view .control .accept:hover {
+  background-color: #4DCF84;
+  border: 0px;
+}
+
+.templateholder .template .widgetholder .sectionblock .signature-block .view .control .decline:hover, .templateholder .template .previewrender .sectionblock .signature-block .view .control .decline:hover {
+  background-color: #ee3b3b;
+  border: 0px;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block, .templateholder .template .previewrender .sectionblock .feature-block {
+  margin-top: 20px;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .sidebarmenu .cancel, .templateholder .template .previewrender .sectionblock .feature-block .sidebarmenu .cancel {
+  padding: 10px 30px;
+  background: gray;
+  border-radius: 7px;
+  margin-bottom: 19px;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .sidebarmenu .patchholder, .templateholder .template .previewrender .sectionblock .feature-block .sidebarmenu .patchholder {
+  display: grid;
+  grid-template-columns: 35px 35px 35px 35px 35px;
+  grid-column-gap: 20px;
+  margin-bottom: 25px;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .sidebarmenu .patchholder .patch, .templateholder .template .previewrender .sectionblock .feature-block .sidebarmenu .patchholder .patch {
+  background: white;
+  border-radius: 6px;
+  text-align: center;
+  padding: 3px;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .sidebarmenu .customcolorholder .labels, .templateholder .template .previewrender .sectionblock .feature-block .sidebarmenu .customcolorholder .labels {
+  display: flex;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .sidebarmenu .customcolorholder .labels .label, .templateholder .template .previewrender .sectionblock .feature-block .sidebarmenu .customcolorholder .labels .label {
+  color: white !important;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .sidebarmenu .customcolorholder .customcolorinput, .templateholder .template .previewrender .sectionblock .feature-block .sidebarmenu .customcolorholder .customcolorinput {
+  background: #6e3c3c00;
+  outline: none;
+  border: 0px;
+  height: 48px;
+  width: 49%;
+  border-radius: 8px;
+  border: 1px solid white;
+  padding: 0px;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .bottomspan, .templateholder .template .previewrender .sectionblock .feature-block .bottomspan {
+  clip-path: polygon(0 0, 100% 0, 100% 83%, 0% 100%);
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .comb, .templateholder .template .previewrender .sectionblock .feature-block .comb {
+  clip-path: polygon(11% 100%, 24% 90%, 38% 100%, 51% 90%, 65% 100%, 79% 90%, 94% 99%, 100% 89%, 100% 53%, 100% 0, 0 0, 0 90%);
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .cover, .templateholder .template .previewrender .sectionblock .feature-block .cover {
+  background-color: red;
+  height: auto;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-position: center;
+  background-size: cover;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .cover .filter, .templateholder .template .previewrender .sectionblock .feature-block .cover .filter {
+  padding: 70px 0px;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .cover .filter .color, .templateholder .template .previewrender .sectionblock .feature-block .cover .filter .color {
+  border: 0px;
+  border: none;
+  background: none;
+  width: 40px;
+  height: 40px;
+  margin-top: -30px;
+  position: relative;
+  top: -43px;
+  left: 10px;
+  border: 1px solid white;
+  border-radius: 8px;
+  background: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .cover .filter .title, .templateholder .template .previewrender .sectionblock .feature-block .cover .filter .title {
+  font-size: 22px;
+  width: 70%;
+  margin: 0 auto;
+  color: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .tooltip-tab, .templateholder .template .previewrender .sectionblock .feature-block .tooltip-tab {
+  color: black;
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.541);
+  backdrop-filter: blur(2px);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 200;
+  margin-top: 10px;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .tooltip-tab .tool, .templateholder .template .previewrender .sectionblock .feature-block .tooltip-tab .tool {
+  margin: 0px 8px;
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  color: black;
+  background-color: #f1f1f1;
+  box-shadow: 0px 0px 5px 0px #b1b1b1;
+  cursor: pointer;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .tooltip-tab .tool .color, .templateholder .template .previewrender .sectionblock .feature-block .tooltip-tab .tool .color {
+  border: 0px;
+  border: none;
+  background: none;
+  width: 40px;
+  height: 40px;
+  margin-top: -30px;
+  position: relative;
+  top: 19px;
+  left: 3px;
+  border: 1px solid white;
+  border-radius: 8px;
+  background: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .tooltip-tab .tool i, .templateholder .template .previewrender .sectionblock .feature-block .tooltip-tab .tool i {
+  font-size: 20px;
+  position: relative;
+  color: gray;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .tooltip-tab .tool:hover, .templateholder .template .previewrender .sectionblock .feature-block .tooltip-tab .tool:hover {
+  background-color: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .tooltip-tab .tool:hover i, .templateholder .template .previewrender .sectionblock .feature-block .tooltip-tab .tool:hover i {
+  color: black;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block .tooltip-tab, .templateholder .template .previewrender .sectionblock .feature-block .tooltip-tab {
+  display: none;
+}
+
+.templateholder .template .widgetholder .sectionblock .feature-block:hover .tooltip-tab, .templateholder .template .previewrender .sectionblock .feature-block:hover .tooltip-tab {
+  display: flex;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block, .templateholder .template .previewrender .sectionblock .image-block {
+  margin-top: 20px;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .tooltip-tab, .templateholder .template .previewrender .sectionblock .image-block .tooltip-tab {
+  color: black;
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.541);
+  backdrop-filter: blur(2px);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 200;
+  margin-top: 10px;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .tooltip-tab .tool, .templateholder .template .previewrender .sectionblock .image-block .tooltip-tab .tool {
+  margin: 0px 8px;
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  color: black;
+  background-color: #f1f1f1;
+  box-shadow: 0px 0px 5px 0px #b1b1b1;
+  cursor: pointer;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .tooltip-tab .tool .color, .templateholder .template .previewrender .sectionblock .image-block .tooltip-tab .tool .color {
+  border: 0px;
+  border: none;
+  background: none;
+  width: 40px;
+  height: 40px;
+  margin-top: -30px;
+  position: relative;
+  top: 19px;
+  left: 3px;
+  border: 1px solid white;
+  border-radius: 8px;
+  background: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .tooltip-tab .tool i, .templateholder .template .previewrender .sectionblock .image-block .tooltip-tab .tool i {
+  font-size: 20px;
+  position: relative;
+  color: gray;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .tooltip-tab .tool:hover, .templateholder .template .previewrender .sectionblock .image-block .tooltip-tab .tool:hover {
+  background-color: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .tooltip-tab .tool:hover i, .templateholder .template .previewrender .sectionblock .image-block .tooltip-tab .tool:hover i {
+  color: black;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .tooltip-tab, .templateholder .template .previewrender .sectionblock .image-block .tooltip-tab {
+  display: none;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block:hover .tooltip-tab, .templateholder .template .previewrender .sectionblock .image-block:hover .tooltip-tab {
+  display: flex;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .choose, .templateholder .template .previewrender .sectionblock .image-block .choose {
+  height: 350px;
+  border-color: green;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .choose .wrap, .templateholder .template .previewrender .sectionblock .image-block .choose .wrap {
+  height: fit-content;
+  width: fit-content;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .choose .wrap .icon, .templateholder .template .previewrender .sectionblock .image-block .choose .wrap .icon {
+  text-align: center;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .choose .wrap .icon i, .templateholder .template .previewrender .sectionblock .image-block .choose .wrap .icon i {
+  font-size: 68px;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .choose .wrap .title, .templateholder .template .previewrender .sectionblock .image-block .choose .wrap .title {
+  padding: 8px 0px;
+  font-size: 18px;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .choose .wrap .custom-file, .templateholder .template .previewrender .sectionblock .image-block .choose .wrap .custom-file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .choose .wrap .custom-file + label, .templateholder .template .previewrender .sectionblock .image-block .choose .wrap .custom-file + label {
+  font-size: 16px;
+  font-weight: 700;
+  color: gray;
+  border-radius: 8px;
+  padding: 4px 10px;
+  background-color: #dddddd;
+  display: inline-block;
+  border: 1px solid white;
+  text-align: center;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .choose .wrap .custom-file:focus + label,
+.templateholder .template .widgetholder .sectionblock .image-block .choose .wrap .custom-file + label:hover, .templateholder .template .previewrender .sectionblock .image-block .choose .wrap .custom-file:focus + label,
+.templateholder .template .previewrender .sectionblock .image-block .choose .wrap .custom-file + label:hover {
+  background-color: white;
+  border: 1px solid gray;
+  color: black;
+  cursor: pointer;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .active, .templateholder .template .previewrender .sectionblock .image-block .active {
+  width: 100%;
+}
+
+.templateholder .template .widgetholder .sectionblock .image-block .active .image, .templateholder .template .previewrender .sectionblock .image-block .active .image {
+  width: 100%;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block, .templateholder .template .previewrender .sectionblock .video-block {
+  margin-top: 20px;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .tooltip-tab, .templateholder .template .previewrender .sectionblock .video-block .tooltip-tab {
+  color: black;
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.541);
+  backdrop-filter: blur(2px);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 200;
+  margin-top: 10px;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .tooltip-tab .tool, .templateholder .template .previewrender .sectionblock .video-block .tooltip-tab .tool {
+  margin: 0px 8px;
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  color: black;
+  background-color: #f1f1f1;
+  box-shadow: 0px 0px 5px 0px #b1b1b1;
+  cursor: pointer;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .tooltip-tab .tool .color, .templateholder .template .previewrender .sectionblock .video-block .tooltip-tab .tool .color {
+  border: 0px;
+  border: none;
+  background: none;
+  width: 40px;
+  height: 40px;
+  margin-top: -30px;
+  position: relative;
+  top: 19px;
+  left: 3px;
+  border: 1px solid white;
+  border-radius: 8px;
+  background: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .tooltip-tab .tool i, .templateholder .template .previewrender .sectionblock .video-block .tooltip-tab .tool i {
+  font-size: 20px;
+  position: relative;
+  color: gray;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .tooltip-tab .tool:hover, .templateholder .template .previewrender .sectionblock .video-block .tooltip-tab .tool:hover {
+  background-color: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .tooltip-tab .tool:hover i, .templateholder .template .previewrender .sectionblock .video-block .tooltip-tab .tool:hover i {
+  color: black;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .tooltip-tab, .templateholder .template .previewrender .sectionblock .video-block .tooltip-tab {
+  display: none;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block:hover .tooltip-tab, .templateholder .template .previewrender .sectionblock .video-block:hover .tooltip-tab {
+  display: flex;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .choose, .templateholder .template .previewrender .sectionblock .video-block .choose {
+  height: 350px;
+  border-color: green;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .choose .wrap, .templateholder .template .previewrender .sectionblock .video-block .choose .wrap {
+  height: fit-content;
+  width: fit-content;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .choose .wrap .title, .templateholder .template .previewrender .sectionblock .video-block .choose .wrap .title {
+  padding: 8px 0px;
+  font-size: 27px;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .choose .wrap .spacer, .templateholder .template .previewrender .sectionblock .video-block .choose .wrap .spacer {
+  height: 30px;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .choose .wrap .selection, .templateholder .template .previewrender .sectionblock .video-block .choose .wrap .selection {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .choose .wrap .selection .iframetype, .templateholder .template .previewrender .sectionblock .video-block .choose .wrap .selection .iframetype {
+  display: none;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .choose .wrap .selection .iframe-selection, .templateholder .template .previewrender .sectionblock .video-block .choose .wrap .selection .iframe-selection {
+  padding: 7px;
+  cursor: pointer;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .choose .wrap .selection .iframe-selection img, .templateholder .template .previewrender .sectionblock .video-block .choose .wrap .selection .iframe-selection img {
+  height: 45px;
+  filter: opacity(0.5);
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .choose .wrap .selection .active, .templateholder .template .previewrender .sectionblock .video-block .choose .wrap .selection .active {
+  background: none !important;
+  width: auto !important;
+  border: 2px solid #d64b4b;
+  border-radius: 8px;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .choose .wrap .selection .active img, .templateholder .template .previewrender .sectionblock .video-block .choose .wrap .selection .active img {
+  filter: opacity(1);
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .choose .wrap .loadvideo, .templateholder .template .previewrender .sectionblock .video-block .choose .wrap .loadvideo {
+  width: fit-content;
+  border: 1px solid #46BD78;
+  color: #46BD78;
+  padding: 4px 10px;
+  margin-top: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .choose .wrap .loadvideo:hover, .templateholder .template .previewrender .sectionblock .video-block .choose .wrap .loadvideo:hover {
+  border: 1px solid #46BD78;
+  color: white;
+  background-color: #46BD78;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .active, .templateholder .template .previewrender .sectionblock .video-block .active {
+  width: 100%;
+  background: none !important;
+  width: auto !important;
+}
+
+.templateholder .template .widgetholder .sectionblock .video-block .active iframe, .templateholder .template .previewrender .sectionblock .video-block .active iframe {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block, .templateholder .template .previewrender .sectionblock .pricing-block {
+  margin-top: 20px;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontitle, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontitle {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontitle .sidetool, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontitle .sidetool {
+  width: 20%;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .settingbtn, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .settingbtn {
+  text-align: center;
+  height: fit-content;
+  width: fit-content;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .settingbtn i, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .settingbtn i {
+  font-size: 22px;
+  cursor: pointer;
+  color: gray;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .settingbtn i:hover, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .settingbtn i:hover {
+  color: black;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .tooltip-box, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .tooltip-box {
+  color: black;
+  width: fit-content;
+  position: absolute;
+  left: 10%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.541);
+  backdrop-filter: blur(2px);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 45px 45px;
+  grid-template-rows: 45px 45px;
+  grid-gap: 10px;
+  z-index: 200;
+  margin-top: 10px;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .tooltip-box .tool, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .tooltip-box .tool {
+  margin: 0px 8px;
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  color: black;
+  background-color: #f1f1f1;
+  box-shadow: 0px 0px 5px 0px #b1b1b1;
+  cursor: pointer;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .tooltip-box .tool i, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .tooltip-box .tool i {
+  font-size: 20px;
+  position: relative;
+  color: gray;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .tooltip-box .tool:hover, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .tooltip-box .tool:hover {
+  background-color: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .tooltip-box .tool:hover i, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .tooltip-box .tool:hover i {
+  color: black;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .tooltip-box, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontitle .sidetool .tooltip-box {
+  display: none;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontitle .sidetool:hover .tooltip-box, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontitle .sidetool:hover .tooltip-box {
+  display: grid;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontitle .title, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontitle .title {
+  width: 79%;
+  padding: 8px 0px;
+  font-size: 27px;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontable, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontable {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontable .tableholder, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontable .tableholder {
+  margin-top: 25px;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontable .tableholder .table, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontable .tableholder .table {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontable .tableholder .table thead tr, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontable .tableholder .table thead tr {
+  border-radius: 8px;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontable .tableholder .table thead tr th, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontable .tableholder .table thead tr th {
+  text-align: center;
+  font-size: 25px;
+  background-color: #b8b8b8;
+  color: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontable .tableholder .table tbody tr td, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontable .tableholder .table tbody tr td {
+  text-align: center;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontable .editor, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontable .editor {
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px 0px lightslategray;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .renderbox .sectiontable .editor .btn, .templateholder .template .previewrender .sectionblock .pricing-block .renderbox .sectiontable .editor .btn {
+  padding: 5px 15px;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder {
+  height: 300px;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder .tooltip-tab, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder .tooltip-tab {
+  color: black;
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.541);
+  backdrop-filter: blur(2px);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 200;
+  margin-top: 10px;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder .tooltip-tab .tool, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder .tooltip-tab .tool {
+  margin: 0px 8px;
+  width: 45px;
+  height: 45px;
+  border-radius: 4px;
+  color: black;
+  background-color: #f1f1f1;
+  box-shadow: 0px 0px 5px 0px #b1b1b1;
+  cursor: pointer;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder .tooltip-tab .tool .color, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder .tooltip-tab .tool .color {
+  border: 0px;
+  border: none;
+  background: none;
+  width: 40px;
+  height: 40px;
+  margin-top: -30px;
+  position: relative;
+  top: 19px;
+  left: 3px;
+  border: 1px solid white;
+  border-radius: 8px;
+  background: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder .tooltip-tab .tool i, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder .tooltip-tab .tool i {
+  font-size: 20px;
+  position: relative;
+  color: gray;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder .tooltip-tab .tool:hover, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder .tooltip-tab .tool:hover {
+  background-color: white;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder .tooltip-tab .tool:hover i, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder .tooltip-tab .tool:hover i {
+  color: black;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder .tooltip-tab, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder .tooltip-tab {
+  display: none;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder:hover .tooltip-tab, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder:hover .tooltip-tab {
+  display: flex;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder .actions, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder .actions {
+  height: fit-content;
+  width: fit-content;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder .actions .title, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder .actions .title {
+  padding: 8px 0px;
+  font-size: 27px;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder .actions .btngroup, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder .actions .btngroup {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder .actions .btngroup .actionbtn, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder .actions .btngroup .actionbtn {
+  font-size: 16px;
+  font-weight: 700;
+  color: gray;
+  border-radius: 8px;
+  padding: 4px 10px;
+  background-color: #dddddd;
+  border: 1px solid white;
+  text-align: center;
+  width: 49%;
+}
+
+.templateholder .template .widgetholder .sectionblock .pricing-block .actionholder .actions .btngroup .actionbtn:hover, .templateholder .template .previewrender .sectionblock .pricing-block .actionholder .actions .btngroup .actionbtn:hover {
+  background-color: white;
+  border: 1px solid gray;
+  color: black;
+  cursor: pointer;
+}
+
+.sectionlist {
+  margin-bottom: 20px;
+}
+
+.sectionlist .sectionitem {
+  display: flex;
+  background-color: lightgray;
+  padding: 10px 2px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.sectionlist .sectionitem:hover {
+  background-color: #e7e7e7;
+}
+
+.sectionlist .sectionitem .sectionname {
+  width: 60%;
+  border: none;
+  background-color: lightgray;
+}
+
+.sectionlist .sectionitem .actions {
+  display: flex;
+  justify-content: flex-end;
+  width: fit-content;
+}
+
+.sectionlist .sectionitem .actions .fa {
+  float: right;
+  color: gray;
+  font-size: 20px;
+  padding: 4px 5px;
+}
+
+.sectionlist .sectionitem .actions .fa-save:hover {
+  color: #3bb36d;
+}
+
+.sectionlist .sectionitem .actions .fa-trash-alt:hover {
+  color: #dd2c2c;
+}
+/*# sourceMappingURL=template.css.map */
