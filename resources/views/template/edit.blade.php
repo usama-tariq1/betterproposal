@@ -13,9 +13,23 @@
             <div class="navigation">
                 <div class="navigate">
 
-                    <div class="logo-holder">
+                    {{-- <div class="logo-holder">
                         <img width="100%" src="https://betterproposals.io/2/img/layout/NEW_BlackYourLogo.png"
                             class="logo p-3">
+                    </div> --}}
+
+
+                    <div class="logo-holder">
+                        @php
+                        $brand = App\Brand::where('id' , $template->brand_id)->first();
+                        @endphp
+                        @if(isset($brand))
+                            <img width="100%" src="{{url('/')}}/companylogo/{{$brand->company_logo}}"
+                            class="logo p-3">
+                        @else
+                            <img width="100%" src="https://betterproposals.io/2/img/layout/NEW_BlackYourLogo.png"
+                            class="logo p-3">
+                        @endif
                     </div>
 
 
@@ -40,7 +54,7 @@
 
                     <div class="templateform" style="">
 
-                        <div class="container">
+                        <div class="container" style="display:none;">
                             <div class="form-group">
                                 <label for="">Template Name</label>
                                 <input type="text" name="templatename" id="templatename" value="{{$template->name}}" class="form-control" placeholder="Template Name">

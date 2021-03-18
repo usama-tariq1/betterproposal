@@ -25,6 +25,10 @@ class IsUser
                     return redirect('/login');
                 }
             }
+            if(Auth::user()->first_login == 1){
+                return redirect('/firstlogin');
+
+            }
         }
 
         if(!Auth::user()){

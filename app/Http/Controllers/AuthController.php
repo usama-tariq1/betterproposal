@@ -7,10 +7,15 @@ use Illuminate\Http\Request;
 // use JsonResponse
 use App\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 class AuthController extends Controller
 {
     //
+
+    use AuthenticatesUsers;
 
     public static function index(){
         return view('auth.login');
@@ -49,7 +54,7 @@ class AuthController extends Controller
     }
 
 
-    public static function register(Request $request){
+    public  function register(Request $request){
         // dd($request->all());
 
         $validator = $request->validate([
@@ -74,6 +79,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->input('password')),
             'company' => $request->input('company'),
             'role' => 2,
+            'first_login' => 1,
 
 
 
@@ -101,8 +107,21 @@ class AuthController extends Controller
 
         session()->flash('message', 'Your account is created');
 
-        return redirect()->route('login');
+        $this->guard()->attempt(
+            $request->only('email' , 'password'), $request->filled('remember')
+        );
 
+        return redirect(URL::to('/'));
+
+        // $logintreat =new AuthenticatesUsers;
+        // $logintreat->login($request);
+
+        // $this->login($request);
+
+    }
+
+    protected function guard(){
+        return Auth::guard();
     }
 
     public function logout(Request $request)

@@ -22,7 +22,7 @@
     </div>
     <div class="row pt-3">
         <div class="col-md-9">
-            @include('proposal.partials.table')
+            {{-- @include('proposal.partials.table') --}}
         </div>
         <div class="col-md-3">
             <div class="pipeline p-3">

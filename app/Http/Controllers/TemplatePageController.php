@@ -7,6 +7,7 @@ use App\TemplatePage;
 use App\Template;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 
 class TemplatePageController extends Controller
@@ -199,10 +200,44 @@ class TemplatePageController extends Controller
     }
 
 
-    public static function add(){
-        return view('template.start');
+    public static function add(Request $request){
+
+        $template_id = self::createnew($request->name, $request->brand_id);
+
+        // return view('template.start');
+        return redirect(URL::to("/template/$template_id"));
 
     }
+
+
+    public static function createnew($name ,$brand_id){
+        $code = self::RandomString();
+        $template= Template::create([
+            'user_id' => Auth::user()->id,
+            'name' => $name,
+            'description' => '..',
+            'code' => $code,
+            'config' => '.',
+            'preview' => ".",
+            'editable' => '.',
+            'brand_id'=> $brand_id
+
+        ]);
+        // $path = '/uploads/images';
+        // $file->move();
+        Storage::disk('template')->put("$code.json", json_encode([
+            'name' => $name,
+            'description' => '..',
+            'code' => $code,
+            'config' => '',
+            'preview' => '',
+            'editable' => '',
+            'brand_id'=> $brand_id
+        ]));
+
+        return $template->id;
+    }
+
 
     public static function preview(Request $request){
         $jsonString = file_get_contents(base_path('storage/app/template/'.$request->code.'.json'));

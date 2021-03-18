@@ -39,7 +39,7 @@
 
                     <div class="templateform" style="display: none;">
 
-                        <div class="container">
+                        <div class="container" style="display:none;">
                             <div class="form-group">
                                 <label for="">Template Name</label>
                                 <input type="text" name="templatename" id="templatename" class="form-control" placeholder="Template Name">

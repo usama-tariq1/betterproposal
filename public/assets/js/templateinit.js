@@ -453,6 +453,7 @@ function addfeatureblock(){
 
                 setblock('featureblock' , data.blockid , data.block);
 
+
                 tinyinit();
             }
         });
@@ -496,7 +497,7 @@ function addpricingblock(){
 
                 setblock('pricingblock' , data.blockid , data.block);
 
-                // tinyinit();
+                tinyinit();
             }
         });
     }

@@ -33,7 +33,7 @@
                         </tr>
                     </thead>
                     <tbody id="table">
-                        @foreach(App\proposal_cache::where('status', '=', 4)->with('proposal')->with('contact')->get() as $proposal_cache)
+                        @forelse(App\proposal_cache::where('status', '=', 4)->where('user_id' , Auth::user()->id)->with('proposal')->with('contact')->get() as $proposal_cache)
                         {{-- {{dd($proposal_cache)}} --}}
                         <tr>
                             <td class="pl-5">
@@ -58,7 +58,15 @@
                             </td>
                         </tr>
 
-                        @endforeach
+                        @empty
+
+                        <tr>
+                            <td>
+                                No Proposal Found!
+                            </td>
+                        </tr>
+
+                        @endforelse
                     </tbody>
                 </table>
                 <nav aria-label="...">

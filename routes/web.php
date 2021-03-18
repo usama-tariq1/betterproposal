@@ -12,6 +12,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Branding\BrandingController;
 use App\Http\Controllers\CoverController;
+use App\Http\Controllers\FirstLogin;
 use App\Http\Middleware\IsAdmin;
 
 
@@ -19,6 +20,7 @@ use App\Http\Middleware\IsAdmin;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Marketplace;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\ProfileController;
 
@@ -42,6 +44,8 @@ use Illuminate\Support\Facades\URL;
 
 // public Routes
 
+
+
 Route::prefix('/')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home')->middleware(IsUser::class);
 
@@ -51,6 +55,14 @@ Route::prefix('/')->group(function () {
     Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
     Route::post('/register', [AuthController::class, 'register'])->name('register');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+    Route::prefix('/firstlogin')->group(function () {
+        Route::get('/', [FirstLogin::class, 'index']);
+        Route::post('/save', [FirstLogin::class, 'save']);
+
+        // Route::get('/details', [FirstLogin::class, 'details']);
+    });
 
 
 
@@ -64,6 +76,20 @@ Route::prefix('/')->group(function () {
 Route::prefix('/profile')->middleware(IsUser::class)->group(function () {
 
     Route::get('/', [ProfileController::class, 'index']);
+
+
+
+});
+
+
+
+// product
+Route::prefix('/product')->middleware(IsUser::class)->group(function () {
+    // api reserved
+    Route::get('/add/{name}', [ProductController::class, 'addproduct']);
+
+    Route::get('/get/{id}', [ProductController::class, 'getproduct']);
+
 
 
 
@@ -98,7 +124,7 @@ Route::prefix('/template')->middleware(IsUser::class)->group(function () {
 
 
     Route::prefix('/add')->group(function () {
-        Route::get('/', [TemplatePageController::class, 'add']);
+        Route::post('/', [TemplatePageController::class, 'add']);
         Route::get('/template', [TemplatePageController::class, 'templateinit']);
         Route::get('/section', [TemplatePageController::class, 'addsection']);
 

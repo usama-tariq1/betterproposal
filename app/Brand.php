@@ -15,7 +15,9 @@ class Brand extends Model
         "brand_name" ,
         "company_name" ,
         "default_brand" ,
-        "user_id"
+        "user_id",
+        "currency",
+        "strength"
     ];
 
 

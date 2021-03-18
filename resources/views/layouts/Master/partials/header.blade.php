@@ -51,10 +51,10 @@
                             src="{{ asset('/assets/images/add-icon.png') }}" alt=""></a>
                 </li>
             </ul>
-            <div class="dropdown-settings">
+            <div class="dropdown-settings" >
                 <li class="header-hotlink header-hotlink-image"
                     style="background-image: url({{ asset('assets/images/nav-profile-blank.png') }}) ; margin:0px;"></li>
-                <div class="dropdown-content-settings">
+                <div class="dropdown-content-settings" style="top: 64px;">
                     <div class="col-md-12 profile" style="padding: 0px;
 
                             padding: 0px;

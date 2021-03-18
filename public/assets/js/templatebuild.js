@@ -2,6 +2,21 @@
 
 console.log('Template Build Initialized !');
 
+var $baseurl = ``;
+
+var clippaths = {
+    none : "none",
+    comb : "polygon(11% 100%, 24% 90%, 38% 100%, 51% 90%, 65% 100%, 79% 90%, 94% 99%, 100% 89%, 100% 53%, 100% 0, 0 0, 0 90%)",
+    bottomsnap : "polygon(0 0, 100% 0, 100% 83%, 0% 100%)"
+}
+
+var cliparray = [
+    "none" ,
+    "comb" ,
+    "bottomsnap" ,
+];
+
+
 
 const tinyinit  = function(){
     var emailHeaderConfig = {
@@ -46,8 +61,36 @@ const tinyinit  = function(){
         // powerpaste_html_import: 'clean',
         };
 
+        var tinymceprice = {
+            selector: '.tinymce-price',
+            menubar: false,
+            inline: true,
+            // plugins: [
+            //     'link',
+            //     'lists',
+            //     'powerpaste',
+            //     'autolink',
+            //     'tinymcespellchecker'
+            // ],
+            toolbar: [
+
+            ],
+            valid_elements: 'p[style],strong,em,span[style],a[href],ul,ol,li',
+            valid_styles: {
+                '*': 'font-size,font-family,color,text-decoration,text-align'
+            },
+            // powerpaste_word_import: 'clean',
+            // powerpaste_html_import: 'clean',
+            };
+
         tinymce.init(emailHeaderConfig);
         tinymce.init(emailBodyConfig);
+        tinymce.init(tinymceprice);
+
+        // setTimeout(() => {
+        //     $('body').find('.tox-tinymce-aux').remove();
+        // $('body').find('.tox-notifications-container').remove();
+        // }, 300);
 }
 
 tinyinit();
@@ -471,6 +514,29 @@ $(document).ready(function () {
         featureblock($(this).parent().parent().parent(), 'changecolor');
     });
 
+    // change bg
+    $('body').on('input' , '.feature-block .bgcolor', function () {
+        featureblock($(this).parent().parent().parent().parent(), 'changebg');
+    });
+    $('body').on('change' , '.feature-block .bgcolor', function () {
+        featureblock($(this).parent().parent().parent().parent(), 'digest');
+    });
+
+    // change fg
+    $('body').on('input' , '.feature-block .fgcolor', function () {
+        featureblock($(this).parent().parent().parent().parent(), 'changefg');
+    });
+
+    $('body').on('change' , '.feature-block .fgcolor', function () {
+        featureblock($(this).parent().parent().parent().parent(), 'digest');
+    });
+
+    // patch
+    $('body').on('click' , '.feature-block .patch', function () {
+        featureblock($(this).parent().parent().parent().parent(), 'applypatch' , $(this));
+    });
+
+
     $('body').on('change' , '.feature-block .color', function () {
         featureblock($(this).parent().parent().parent(), 'digest');
     });
@@ -487,11 +553,133 @@ $(document).ready(function () {
     });
 
 
+    $('body').on('click' , '.feature-block .removeimage', function () {
+        featureblock($(this).parent().parent().parent().parent(), 'removebg');
+        // console.log('hit');
+    });
+
+    $('body').on('click' , '.feature-block .openside', function () {
+        featureblock($(this).parent().parent(), 'openside');
+        // console.log('hit');
+    });
+
+    $('body').on('click' , '.feature-block .closeside', function () {
+        featureblock($(this).parent().parent(), 'closeside');
+        // console.log('hit');
+    });
+
+    // clippath
+
+
+    $('body').on('click' , '.feature-block .clipnext', function () {
+        featureblock($(this).parent().parent().parent().parent(), 'nextclip' , $(this));
+        // console.log('hit');
+    });
+
+    $('body').on('click' , '.feature-block .clippre', function () {
+        featureblock($(this).parent().parent().parent().parent(), 'preclip' , $(this));
+        // console.log('hit');
+    });
+
+
+
+    // save and update
+
+    $('body').on('click' , '.feature-block .saveandupdate', function () {
+        featureblock($(this).parent().parent(), 'saveandupdate' );
+        // console.log('hit');
+    });
+
+
+
+
 });
 
 
-const featureblock = function (block , func){
+const featureblock = function (block , func , el= null){
     var blockparent = block;
+
+    const saveandupdate = function(){
+        savetemplate();
+        closeside();
+    }
+
+    const nextclip = function (){
+        var clip = $(blockparent).find('.testslide').attr('clip');
+
+
+        var currentindex = cliparray.indexOf(clip);
+        var nextindex = currentindex + 1;
+
+        var clip = cliparray[nextindex];
+
+        var clippath = clippaths[clip];
+        // var clippath =
+
+        $(blockparent).find('.testslide').attr('clip' , clip);
+        $(blockparent).find('.testslide').css({"clip-path" : `${clippath}`});
+        $(blockparent).find('.cover').css({"clip-path" : `${clippath}`});
+
+        savetemplate();
+        // console.log(clippath);
+        // console.log(clippaths[clip]);
+    }
+
+    const preclip = function (){
+        var clip = $(blockparent).find('.testslide').attr('clip');
+
+
+        var currentindex = cliparray.indexOf(clip);
+        var preindex = currentindex - 1;
+
+        var clip = cliparray[preindex];
+
+        var clippath = clippaths[clip];
+        // var clippath =
+
+        $(blockparent).find('.testslide').attr('clip' , clip);
+        $(blockparent).find('.testslide').css({"clip-path" : `${clippath}`});
+        $(blockparent).find('.cover').css({"clip-path" : `${clippath}`});
+        savetemplate();
+
+        // console.log(clippath);
+        // console.log(clippaths[clip]);
+    }
+
+    const openside = function(){
+        blockparent.find('.sidebarmenu').animate({
+            'right' : "0px"
+        } , 200);
+    }
+
+    const closeside = function(){
+        blockparent.find('.sidebarmenu').animate({
+            'right' : "-400px"
+        } , 200);
+    }
+
+    const applypatch = function(){
+        var bgcolor = el.attr("bg");
+        var fgcolor = el.attr("fg");
+
+        // var color = blockparent.find('.bgcolor').val();
+
+        blockparent.find('.filter').css('background-color', `${bgcolor}`);
+        blockparent.attr('bg' , bgcolor);
+        blockparent.find('.bgcolor').val(rgbToHex(bgcolor));
+        // console.log(rgbToHex(bgcolor));
+
+
+
+        blockparent.find('.filter .title').css('color', `${fgcolor}`);
+        blockparent.attr('fg' , fgcolor);
+        blockparent.find('.fgcolor').val(rgbToHex(fgcolor));
+
+        savetemplate();
+
+
+
+    }
 
 
     const changecolor = function(){
@@ -500,6 +688,28 @@ const featureblock = function (block , func){
 
         blockparent.find('.filter').css('background-color', `${color}`);
         blockparent.attr('bg' , color);
+
+
+
+    }
+
+    const changebg = function(){
+        // console.log(blockparent.find('.color').val());
+        var color = blockparent.find('.bgcolor').val();
+
+        blockparent.find('.filter').css('background-color', `${color}`);
+        blockparent.attr('bg' , color);
+
+
+
+    }
+
+    const changefg = function(){
+        // console.log(blockparent.find('.color').val());
+        var color = blockparent.find('.fgcolor').val();
+
+        blockparent.find('.filter .title').css('color', `${color}`);
+        blockparent.attr('fg' , color);
 
 
 
@@ -529,20 +739,39 @@ const featureblock = function (block , func){
                 "background-size": "cover",
             });
 
+            blockparent.find('.imagepreviewholder').html(`
+                <img src="${e.target.result}" alt="" class="imagepreview">
+                <button class="btn btn-primary removeimage" > <i class="fa fa-times "></i> Remove Image </button>
+            `);
+
+            // blockparent.find('.bgimageinput').hide();
+
 
 
 
             blockparent.attr('image' , 'active') ;
             blockparent.attr('filter' , 'deactive') ;
 
-            blockparent.find('.filter').css({"opacity" : "0.4" , "background-color" : ``});
+            blockparent.find('.filter').css({"opacity" : "0.4" , "background-color" : `${$(blockparent).attr('bg')}`});
 
 
 
             console.log('hit on set');
+            savetemplate();
             // $(block).find('.activesource').attr('src', e.target.result);
             // $(block).attr('state', 'active');
         }
+    }
+
+    const removebg = function(){
+        blockparent.find('.cover').css("background" , `white`);
+
+        blockparent.find('.imagepreviewholder').html('');
+        blockparent.find('.filter').css({"opacity" : "1" });
+        blockparent.attr('image' , 'deactive') ;
+        blockparent.attr('filter' , 'active') ;
+        savetemplate();
+
     }
 
     const digest =function(){
@@ -940,9 +1169,24 @@ $(document).ready(function (){
     $('body').on( 'click', '.pricing-block .btntitle',function () {
         priceblock($(this).parent().parent().parent().parent(), 'addtitle');
     });
-
+    // ask choice
     $('body').on( 'click','.pricing-block .btntable' ,  function () {
-        priceblock($(this).parent().parent().parent().parent(), 'addtable');
+        priceblock($(this).parent().parent().parent().parent(), 'askchoice');
+    });
+    // cancel choice
+    $('body').on( 'click','.pricing-block .rowchoice .cancel' ,  function () {
+        priceblock($(this).parent().parent().parent().parent(), 'cancelchoice');
+    });
+
+    // cancel choice
+    $('body').on( 'click','.pricing-block .dontfind' ,  function () {
+        priceblock($(this).parent().parent().parent(), 'dontfind');
+    });
+
+
+    // accept choice
+    $('body').on( 'click','.pricing-block .rowchoice .accept' ,  function () {
+        priceblock($(this).parent().parent().parent().parent(), 'addrow');
     });
 
 
@@ -958,6 +1202,56 @@ $(document).ready(function (){
         priceblock($(this).parent().parent().parent(), 'remove');
     });
 
+    // text actions
+
+    $('body').on('click' , '.pricing-block .sectiontitle .titleremove', function () {
+        priceblock('', 'titleremove' , $(this));
+    });
+
+
+    // table actions
+        // remove
+    $('body').on('click' , '.pricing-block .tablerow .removerow', function () {
+        priceblock('', 'removerow' , $(this));
+    });
+
+
+    // price
+    $('body').on('focusout' , '.pricing-block .tablerow .price', function () {
+        priceblock('', 'priceupdate' , $(this));
+    });
+
+    // priceperunit
+    $('body').on('focusout' , '.pricing-block .tablerow .priceperunit', function () {
+        priceblock('', 'priceperunitupdate' , $(this));
+    });
+
+    // qty update
+    $('body').on('focusout' , '.pricing-block .tablerow .qty', function () {
+        priceblock('', 'priceperunitupdate' , $(this));
+    });
+
+
+    // sorting
+    $('body').on('click' , '.pricing-block .tablerow .sortuprow', function () {
+        priceblock('', 'sortuprow' , $(this));
+    });
+
+    $('body').on('click' , '.pricing-block .tablerow .sortdownrow', function () {
+        priceblock('', 'sortdownrow' , $(this));
+    });
+
+
+    // toggle options
+    $('body').on('change' , '.pricing-block .tablerow .descriptiontoggle .checkbox', function () {
+        priceblock('', 'toggledescription' , $(this));
+    });
+
+    $('body').on('change' , '.pricing-block .tablerow .qtytoggle .checkbox', function () {
+        priceblock('', 'toggleqty' , $(this));
+    });
+
+
 
 
 });
@@ -971,22 +1265,158 @@ const priceblock = function (block , func , el = null){
         var active = blockparent.find('[section=active]');
         var choose = blockparent.find('.choose');
         var renderbox = blockparent.find('.renderbox');
-        if(el != null){
-            console.log(el.html());
-            // return;
-            var tabledata = el.find('.tabledata').val();
+        // if(el != null){
+        //     console.log(el.html());
+        //     // return;
+        //     var tabledata = el.find('.tabledata').val();
 
-            // console.log(tabledata);
-            if(tabledata.length < 1){
-                tabledata = [];
-            }
-            else{
-                tabledata = JSON.parse(el.find('.tabledata').val());
-                // console.log(tabledata);
+        //     // console.log(tabledata);
+        //     if(tabledata.length < 1){
+        //         tabledata = [];
+        //     }
+        //     else{
+        //         tabledata = JSON.parse(el.find('.tabledata').val());
+        //         // console.log(tabledata);
 
-            }
+        //     }
+        // }
+
+    }
+
+    const toggledescription = function(){
+        var rowparent = el.parent().parent().parent().parent().parent().parent();
+        // rowparent.find('.description').toggle();
+        var check = el.is(":checked");
+        if(el.is(":checked")){
+            rowparent.find('.description').show();
+            el.prop('checked',true);
+        }
+        else{
+            rowparent.find('.description').hide();
+            el.prop('checked',false);
+        }
+    }
+
+    const toggleqty = function(){
+        var rowparent = el.parent().parent().parent().parent().parent().parent();
+        // rowparent.find('.description').toggle();
+        var check = el.is(":checked");
+        if(el.is(":checked")){
+            rowparent.find('.qtyholder').show();
+            el.prop('checked',true);
+        }
+        else{
+            rowparent.find('.qtyholder').hide();
+            el.prop('checked',false);
+        }
+    }
+
+    const dontfind = function(){
+        block.find('.newproductname').show();
+        block.find('.productselect').hide();
+        block.find('.productselect').val("");
+
+    }
+
+    const askchoice = function(){
+        blockparent.find('.rowchoice').show();
+        blockparent.find('.actions').hide();
+
+
+    }
+
+    const cancelchoice = function(){
+        blockparent.find('.rowchoice').hide();
+        blockparent.find('.actions').show();
+        block.find('.newproductname').hide();
+        block.find('.productselect').show();
+
+    }
+
+
+    const sortuprow = function (){
+        console.log('hit on sort');
+        var rowparent = el.parent().parent().parent();
+        var preel = rowparent.prev();
+        if(preel.length > 0){
+            var rowparenthtml = rowparent[0].outerHTML;
+            rowparent.remove();
+            preel.before(rowparenthtml);
+            savetemplate();
         }
 
+    }
+
+    const sortdownrow = function (){
+        var rowparent = el.parent().parent().parent();
+        var nextel = rowparent.next();
+        if(nextel.length > 0){
+            var rowparenthtml = rowparent[0].outerHTML;
+            rowparent.remove();
+            nextel.after(rowparenthtml);
+            savetemplate();
+        }
+
+    }
+
+    const removerow = function(){
+        var rowparent = el.parent().parent().parent();
+        var price = parseInt(rowparent.find(".price").html());
+        var parent = rowparent.parent().parent();
+        var total = parseInt(parent.find(".total").html());
+        total = total - price;
+        parent.find(".total").html(total);
+        rowparent.remove();
+        savetemplate();
+    }
+
+    const titleremove = function(){
+        var titleparent = el.parent().parent().parent();
+        titleparent.remove();
+        savetemplate();
+    }
+
+    // priceupdate
+    const priceupdate = function(){
+        var rowparent = el.parent().parent().parent().parent();
+        var parent = el.parent().parent().parent().parent().parent().parent();
+
+        blockparent = parent;
+        var price = parseInt(rowparent.find('.price').html());
+        var priceperunit = parseInt(rowparent.find('.priceperunit').html());
+        var qty = parseInt(rowparent.find('.qty').html());
+
+        rowparent.find('.priceperunit').html(price/qty);
+
+        var total = 0;
+
+        parent.find('.price').each(function(){
+            var thisprice = parseInt($(this).html());
+            total += thisprice;
+
+        });
+
+        parent.find('.total').html(total);
+        savetemplate();
+
+        // rowparent.remove();
+    }
+
+    // priceperunitupdate
+    const priceperunitupdate = function(){
+        var rowparent = el.parent().parent().parent().parent();
+        var parent = el.parent().parent().parent().parent().parent().parent();
+
+        var priceperunit = parseInt(rowparent.find('.priceperunit').html());
+        var qty = parseInt(rowparent.find('.qty').html());
+
+        var rowtotal = priceperunit * qty;
+
+        rowparent.find('.price').html(rowtotal);
+
+        blockparent = parent;
+
+        priceupdate();
     }
 
 
@@ -1001,7 +1431,7 @@ const priceblock = function (block , func , el = null){
             total = parseInt(row.price) + total;
             el.append(`
                 <tr>
-                    <td >${row.title}</td>
+                    <td > <div class="tinymce-heading"> ${row.title} </div> </td>
                     <td >${row.price}</td>
 
                 </tr>
@@ -1015,46 +1445,272 @@ const priceblock = function (block , func , el = null){
 
                 </tr>
         `);
+        tinyinit();
     }
 
-    const addtable = function () {
-        var tabletemplate = `
+    const addrow = function () {
 
-            <div class="sectiontable" >
-                <input type="text" value=""  class="tabledata " style="display:none;">
+        var choice = parseInt($(block).find('.rowchoice .productselect').val());
+        $(block).find('.rowchoice').hide();
+        $(block).find('.actions').show();
 
-                <div class="tableholder">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Price</th>
+        var newproductname = $('.newproductname').val();
+        // console.log();
+        if($(block).find('.rowchoice .productselect').val().length == 0){
+            // choice = -1;
+            // console.log(newproductname);
+            if(newproductname.length > 0){
 
-                            </tr>
-                        </thead>
-                        <tbody class="tablebody">
+                $.ajax({
+                    url : `${baseurl}/product/add/${newproductname}`,
+                    method : 'GET',
+                    success : function(product){
+                        console.log(product);
+                        // return;
+                        $('body').find('.productselect').append(`
+                            <option value="${product.name}">${product.name} </option>
+                        `);
+                    }
+                });
 
-                        </tbody>
-                    </table>
+                var tabletemplate = `
 
-                </div>
-                <hr>
+                    <div class="tablerow">
+                        <div class="editor">
+                            <div class="tooltip-box editor" style="left: 5%; background: #000000b0;" >
+                                <div class="tool removerow">
+                                    <i class="fa fa-trash-alt " ></i>
+                                </div>
+                                <div class="tool">
+                                    <i class="fa fa-save" ></i>
+
+                                </div>
+                                <div class="tool sortuprow" >
+                                    <i class="fa fa-chevron-up"></i>
+                                </div>
+
+                                <div class="tool sortdownrow">
+                                    <i class="fa fa-chevron-down"></i>
+                                </div>
+
+                                <div class="extratool descriptiontoggle">
+                                    <div class="title"> Description </div>
+                                    <div class="togglebtn">
+                                        <label class="switch">
+                                            <input type="checkbox" class="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div style="width: 2px;">
+                                </div>
+                                <div class="extratool qtytoggle">
+                                    <div class="title"> Quantity </div>
+                                    <div class="togglebtn">
+                                        <label class="switch">
+                                            <input type="checkbox" class="checkbox">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <i class="fas fa-ellipsis-v editor"></i>
+                        </div>
+                        <div class="info">
+                            <div class="part1">
+                                <div class="title tinymce-price">
+                                    ${newproductname}
+                                </div>
+                                <div class="description tinymce-price" style="display:none;">
+                                    Description
+                                </div>
+                            </div>
+                            <div class="part2">
+                                <div class="priceholder">
+                                &euro; <span class="price tinymce-price" > 0</span>
+                                </div>
+                                <div class="qtyholder" style="display:none;">
+                                    <span class="qty tinymce-price">1</span> @ 	&euro; <span class="priceperunit tinymce-price">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                `;
+                renderbox.append(tabletemplate);
+                tinyinit();
+
+            }
+            else{
+                choice == -1;
+            }
+        }
+
+
+        if(choice > 0){
+
+            $.ajax({
+                url : `${baseurl}/product/get/${choice}`,
+                method : 'GET',
+                success : function(product){
+                    console.log(product);
+                    // return;
+
+                    var tabletemplate = `
+
+                        <div class="tablerow">
+                            <div class="editor">
+                                <div class="tooltip-box editor" style="left: 5%; background: #000000b0;" >
+                                    <div class="tool removerow">
+                                        <i class="fa fa-trash-alt " ></i>
+                                    </div>
+                                    <div class="tool">
+                                        <i class="fa fa-save" ></i>
+
+                                    </div>
+                                    <div class="tool sortuprow" >
+                                        <i class="fa fa-chevron-up"></i>
+                                    </div>
+
+                                    <div class="tool sortdownrow">
+                                        <i class="fa fa-chevron-down"></i>
+                                    </div>
+                                    <div class="extratool descriptiontoggle">
+                                        <div class="title"> Description </div>
+                                        <div class="togglebtn">
+                                            <label class="switch">
+                                                <input type="checkbox" class="checkbox">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div style="width: 2px;">
+                                    </div>
+                                    <div class="extratool qtytoggle">
+                                        <div class="title"> Quantity </div>
+                                        <div class="togglebtn">
+                                            <label class="switch">
+                                                <input type="checkbox" class="checkbox">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <i class="fas fa-ellipsis-v editor"></i>
+                            </div>
+                            <div class="info">
+                                <div class="part1">
+                                    <div class="title tinymce-price">
+                                        ${product.name}
+                                    </div>
+                                    <div class="description tinymce-price" style="display:none;">
+                                        Description
+                                    </div>
+                                </div>
+                                <div class="part2">
+                                    <div class="priceholder">
+                                    &euro; <span class="price tinymce-price" > 0</span>
+                                    </div>
+                                    <div class="qtyholder" style="display:none;">
+                                        <span class="qty tinymce-price">1</span> @ 	&euro; <span class="priceperunit tinymce-price">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    `;
+                    renderbox.append(tabletemplate);
+                    savetemplate();
+                    tinyinit();
+
+
+                }
+            });
+
+        }
+        else if(choice == -1){
+            var tabletemplate = `
+
+            <div class="tablerow">
                 <div class="editor">
-                    <div class="form-group">
-                    <label for="">Title</label>
-                    <input type="text" name="title" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                    <div class="tooltip-box editor" style="left: 5%; background: #000000b0;" >
+                        <div class="tool removerow">
+                            <i class="fa fa-trash-alt " ></i>
+                        </div>
+                        <div class="tool">
+                            <i class="fa fa-save" ></i>
+
+                        </div>
+                        <div class="tool sortuprow" >
+                            <i class="fa fa-chevron-up"></i>
+                        </div>
+
+                        <div class="tool sortdownrow">
+                            <i class="fa fa-chevron-down"></i>
+                        </div>
+
+                        <div class="extratool descriptiontoggle">
+                            <div class="title"> Description </div>
+                            <div class="togglebtn">
+                                <label class="switch">
+                                    <input type="checkbox" class="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div style="width: 2px;">
+                        </div>
+
+                        <div class="extratool qtytoggle">
+                            <div class="title"> Quantity </div>
+                            <div class="togglebtn">
+                                <label class="switch">
+                                    <input type="checkbox" class="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+
+
                     </div>
-                    <div class="form-group">
-                        <label for="">Price</label>
-                        <input type="number" value="0" min="0" name="price" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                    <i class="fas fa-ellipsis-v editor"></i>
+                </div>
+                <div class="info">
+                    <div class="part1">
+                        <div class="title tinymce-price" >
+                            Name
+                        </div>
+                        <div class="description tinymce-price" style="display:none;">
+                            Description
+                        </div>
                     </div>
-                    <div class="btn btn-primary rowinsert">Add</div>
+                    <div class="part2">
+                        <div class="priceholder">
+                        &euro; <span class="price tinymce-price" > 0</span>
+                        </div>
+                        <div class="qtyholder" style="display:none;">
+                            <span class="qty tinymce-price">1</span> @ &euro; <span class="priceperunit tinymce-price">0</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
 
         `;
         renderbox.append(tabletemplate);
+
+
+        }
+
+        tinyinit();
+        savetemplate();
+
+
+
 
     }
 
@@ -1067,12 +1723,6 @@ const priceblock = function (block , func , el = null){
                         <i class="fa fa-cog"></i>
                     </div>
                     <div class="tooltip-box">
-                        <div class="tool">
-                            <i class="fa fa-trash-alt" ></i>
-                        </div>
-                        <div class="tool setting ">
-                            <i class="fa fa-cog"></i>
-                        </div>
 
                         <div class="tool">
                             <i class="fa fa-chevron-up"></i>
@@ -1080,6 +1730,10 @@ const priceblock = function (block , func , el = null){
 
                         <div class="tool">
                             <i class="fa fa-chevron-down"></i>
+                        </div>
+
+                        <div class="tool titleremove">
+                            <i class="fa fa-trash-alt" ></i>
                         </div>
                     </div>
 
@@ -1128,7 +1782,7 @@ const priceblock = function (block , func , el = null){
             section.find('.tabledata').val(JSON.stringify(tabledata));
 
             // return;
-            settable(table , tabledata);
+            // settable(table , tabledata);
         }
 
         savetemplate();
@@ -1335,6 +1989,31 @@ function correctorder(){
 
 }
 
+
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(val) {
+
+
+    val = val.replace("rgb(", "");
+    val = val.replace(")", "");
+
+    val  = val.split(',');
+    // console.log(val);
+
+    var r = parseInt(val[0]);
+    var g = parseInt(val[1]);
+    var b = parseInt(val[2]);
+
+
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
+//   alert(rgbToHex(0, 51, 255)); // #0033ff
 
 
 

@@ -13,7 +13,8 @@ class Template extends Model
         'config',
         'preview',
         'code',
-        'editable'
+        'editable',
+        'brand_id'
 
 
 

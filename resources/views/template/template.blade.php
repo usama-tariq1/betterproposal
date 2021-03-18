@@ -6,7 +6,12 @@
             <h3 class="mr-auto">Dashboard</h3>
         </div>
         <div class="col-md-3 dash">
-              <button route="{{url('/')}}/template/add" class="create"><img src="{{asset('/assets/images/add-icon1.png')}}" width="40px" alt="">Create New Template</button>
+              {{-- <button route="{{url('/')}}/template/add" class="create"><img src="{{asset('/assets/images/add-icon1.png')}}" width="40px" alt="">Create New Template</button> --}}
+
+            <button class="create" data-toggle="modal" data-target="#modelId">
+                <img src="{{asset('/assets/images/add-icon1.png')}}" width="40px" alt="">
+                Create New Template
+            </button>
         </div>
     </div>
     <div class="row">
@@ -54,4 +59,63 @@
     </div>
 
 </div>
+
+
+
+
+<div class="modal fade" id="modelId" role="dialog" aria-labelledby="modelId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Template</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addtemplate" action="{{url('/')}}/template/add" method="post">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <div class="form-group">
+                        <label for="">Name of Template</label>
+                        <input type="text" name="name" id="" class="form-control inp" errname="Template Name" required="true" placeholder="Name..">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Brand</label>
+                        <select name="brand_id" id="" class="form-control inp" required="true" errname="Brand">
+                            <option value=""> Select Brand</option>
+                            @foreach (App\Brand::where("user_id" , Auth::user()->id)->get() as $brand)
+                                <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                            @endforeach
+                        </select>
+
+                    </div>
+
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" onclick="addtemplate('addtemplate')" class="btn btn-primary">next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+function addtemplate(formid){
+    var validation = validateform(`#${formid}`);
+
+    console.log(validation);
+
+    if(validation.errors < 1){
+        $(`#${formid}`).submit();
+    }
+}
+</script>
+
 @endsection

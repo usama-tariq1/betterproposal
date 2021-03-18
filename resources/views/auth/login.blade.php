@@ -8,8 +8,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
-    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
         google.charts.load('current', {packages: ['corechart']});
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="{{asset('/assets/css/style.css')}}">
     <title>Dashboard-Better Proposals</title>
   </head>
-  <body style="background-color: #1E222C;"> 
+  <body style="background-color: #1E222C;">
 
 
 <div class="container">
@@ -59,9 +59,9 @@
                             <div class="mid row pb-5">
                                   <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">Keep me logged in</label>
+                                    <label class="custom-control-label" for="customCheck1">Don't have an Account?</label>
                                   </div>
-                                  <a class=" pt-1 pl-5 forgot" href="">Forgot Your Pasaword ?</a>
+                                  <a class=" pt-1 pl-5 forgot" href="{{url('/')}}/signup">Signup Here!</a>
                                </div>
                         </form>
                   </div>
