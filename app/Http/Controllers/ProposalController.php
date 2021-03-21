@@ -7,6 +7,7 @@ use App\Covers;
 use Illuminate\Http\Request;
 
 use App\Proposal;
+use App\Proposal_activities;
 use App\proposal_cache;
 use App\Template;
 use Illuminate\Support\Facades\Auth;
@@ -190,9 +191,17 @@ class ProposalController extends Controller
             'action' => 'new',
             'brand_id' => $request->brand_id,
             'cover_id' => $cover_id,
-            'contact_id' => $request->contact_id
+            'contact_id' => $request->contact_id,
+            'company_name' => $request->company_name
 
         ]);
+
+        $proposal_activity = Proposal_activities::create(
+            [
+                "proposal_id" => $proposal->id,
+                "action" => "Proposal Created"
+            ]
+        );
 
         // dd($template_id);
 
@@ -259,6 +268,11 @@ class ProposalController extends Controller
             "user_id" => Auth::user()->id
         ]);
 
+        $proposal_activity = Proposal_activities::create([
+            "proposal_id" => $request->id,
+            "action" => "Proposal Sent To $request->firstname ($request->email)"
+        ]);
+
 
         // dd($contact_id);
         $cacheid = $proposal_cache->id;
@@ -322,6 +336,13 @@ class ProposalController extends Controller
         $proposal_cache->status = 4;
         $proposal_cache->save();
 
+
+
+        $proposal_activity = Proposal_activities::create([
+            "proposal_id" => $request->id,
+            "action" => "Proposal Accepted"
+        ]);
+
         return response()->json([
             "status" => 200
         ]);
@@ -338,6 +359,12 @@ class ProposalController extends Controller
         $proposal_cache->status = -1;
         $proposal_cache->save();
 
+
+        $proposal_activity = Proposal_activities::create([
+            "proposal_id" => $request->id,
+            "action" => "Proposal Declined"
+        ]);
+
         return response()->json([
             "status" => 200
         ]);
@@ -350,6 +377,11 @@ class ProposalController extends Controller
             "id" => $request->id,
 
         ])->with('brand')->with('brand.brand_settings')->with('template')->first();
+
+
+
+
+
         // dd($proposal);
         return view('proposal.thanks')->with('proposal', $proposal);
     }

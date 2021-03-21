@@ -1,13 +1,28 @@
+
+
+
+<style>
+    .logo{
+        width: 150px !important;
+        height: auto !important;
+        margin-left: 14px;
+    }
+    .logo > img{
+        width: 100% !important;
+        height: auto !important;
+    }
+</style>
+
 <div class="main-header">
     <div class="logo">
-        <img src="{{url('/')}}/dist-assets/images/logo.png" alt="">
+        <img src="{{url('/')}}/assets/images/logo.png" alt="">
     </div>
     <div class="menu-toggle">
         <div></div>
         <div></div>
         <div></div>
     </div>
-    <div class="d-flex align-items-center">
+    {{-- <div class="d-flex align-items-center">
         <!-- Mega menu -->
         <div class="dropdown mega-menu d-none d-md-block">
             <a href="#" class="btn text-muted dropdown-toggle mr-3" id="dropdownMegaMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mega Menu</a>
@@ -56,13 +71,13 @@
             <input type="text" placeholder="Search" >
             <i class="search-icon text-muted i-Magnifi-Glass1"></i>
         </div>
-    </div>
+    </div> --}}
     <div style="margin: auto"></div>
     <div class="header-part-right">
         <!-- Full screen toggle -->
         <i class="i-Full-Screen header-icon d-none d-sm-inline-block" data-fullscreen></i>
         <!-- Grid menu Dropdown -->
-        <div class="dropdown">
+        {{-- <div class="dropdown">
             <i class="i-Safe-Box text-muted header-icon" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="menu-icon-grid">
@@ -74,9 +89,9 @@
                     <a href="#"><i class="i-Ambulance"></i> Support</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Notificaiton -->
-        <div class="dropdown">
+        {{-- <div class="dropdown">
             <div class="badge-top-container" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="badge badge-primary">3</span>
                 <i class="i-Bell text-muted header-icon"></i>
@@ -140,7 +155,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Notificaiton End -->
         <!-- User avatar dropdown -->
         <div class="dropdown">
@@ -148,11 +163,11 @@
                 <img src="{{url('/')}}/dist-assets/images/faces/1.jpg" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                     <div class="dropdown-header">
-                        <i class="i-Lock-User mr-1"></i> Timothy Carlson
+                        <i class="i-Lock-User mr-1"></i> {{Auth::user()->name}}
                     </div>
-                    <a class="dropdown-item">Account settings</a>
-                    <a class="dropdown-item">Billing history</a>
-                    <a class="dropdown-item" href="signin.html">Sign out</a>
+                    {{-- <a class="dropdown-item">Account settings</a>
+                    <a class="dropdown-item">Billing history</a> --}}
+                    <a class="dropdown-item" href="{{url('/')}}/logout">Sign out</a>
                 </div>
             </div>
         </div>

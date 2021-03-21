@@ -17,7 +17,8 @@ class Proposal extends Model
         'brand_id',
         'cover_id',
         'status',
-        'contact_id'
+        'contact_id',
+        'company_name'
 
 
 

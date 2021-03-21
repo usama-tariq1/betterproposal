@@ -89,7 +89,7 @@
                             value="{{@$cover->cover_from}}" >
                         </span>
 
-                        of
+                        at
                         <span class="editor">
                             <input type="text" name="cover_to" class="inp" id=""
                             value="{{@$cover->cover_to}}" >

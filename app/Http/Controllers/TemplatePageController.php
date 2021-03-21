@@ -72,6 +72,24 @@ class TemplatePageController extends Controller
         return redirect()->back();
 
 
+
+    }
+
+
+    public function setupbrand(Request $request){
+        // dd($request->all());
+
+        $template = Template::where('id' , $request->id)->first();
+
+        $template->brand_id = $request->brand_id;
+
+        $template->name = $request->name;
+
+        $template->save();
+
+        return redirect()->back();
+
+
     }
 
 
@@ -202,7 +220,16 @@ class TemplatePageController extends Controller
 
     public static function add(Request $request){
 
-        $template_id = self::createnew($request->name, $request->brand_id);
+
+
+        if(!isset($request->brand_id)){
+            $brand_id = null;
+        }
+        else{
+            $brand_id = $request->brand_id;
+        }
+
+        $template_id = self::createnew($request->name, $brand_id);
 
         // return view('template.start');
         return redirect(URL::to("/template/$template_id"));

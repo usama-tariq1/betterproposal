@@ -34,10 +34,61 @@
             @endif
             <div class="card-body">
                 <h5 class="card-title">{{$cover->name}}</h5>
+
+                @if ($cover->brand_id)
+
                 <div class="right" style="float: none !important;">
                     <button route="{{url('/')}}/cover/edit/{{$cover->id}}" type="button" class="btn">Edit</button>
                     <button route="{{url('/')}}/cover/delete/{{$cover->id}}" type="button" class="btn">Delete</button>
                 </div>
+
+                @else
+                <div class="right" style="float: none !important;">
+                    <button  type="button" data-toggle="modal" data-target="#setupbrand{{$cover->id}}" class="btn">Setup Brand</button>
+
+                    <div class="modal fade" id="setupbrand{{$cover->id}}" role="dialog" aria-labelledby="modelId" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Setup Brand</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form id="addcover" action="{{url('/')}}/cover/setup/brand/{{$cover->id}}" method="post">
+                                    <div class="modal-body">
+                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                        <div class="form-group">
+                                            <label for="">Name of Cover</label>
+                                            <input type="text" name="name" id="" class="form-control inp" value="{{$cover->name}}" required="true" placeholder="Name..">
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="">Brand</label>
+                                            <select name="brand_id" id="" class="form-control inp" required="true" errname="Brand">
+                                                <option value=""> Select Brand</option>
+                                                @foreach (App\Brand::where("user_id" , Auth::user()->id)->get() as $brand)
+                                                    <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                                                @endforeach
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                @endif
             </div>
         </div>
 

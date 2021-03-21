@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
 
-                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4" >
+                    <div class="card card-icon-bg card-icon-bg-primary o-hidden mb-4" data-toggle="modal" data-target="#addnewcover" >
                         <div class="card-body text-center"><i class="i-Add"></i>
                             <div class="content">
                                 <p class="text-muted mt-2 mb-0">Add New</p>
@@ -83,8 +83,8 @@
                                 <li class="list-group-item">Vestibulum at eros</li>
                             </ul> --}}
                             <div class="card-body">
-                                <a class="card-link" href="{{url('/')}}/cover/{{$cover->id}}">Edit</a>
-                                <a class="card-link" href="{{url('/')}}/cover/preview/{{$cover->id}}">Preview</a>
+                                <a class="card-link" href="{{url('/')}}/cover/edit/{{$cover->id}}">Edit</a>
+                                <a class="card-link" href="{{url('/')}}/cover/edit/{{$cover->id}}">Preview</a>
                                 <a class="card-link" href="{{url('/')}}/cover/delete/{{$cover->id}}">Delete</a>
 
                             </div>
@@ -146,18 +146,18 @@
 
                         <div class="form-group">
                             <label class="col-form-label" for="recipient-name-2"> Proposal For :</label>
-                            <input class="form-control inp" required="true" name="for" type="text" />
+                            <input class="form-control inp" required="true" name="for" type="text" value="{{ "{Company_name}" }}" />
                         </div>
 
 
                         <div class="form-group">
-                            <label class="col-form-label" for="recipient-name-2"> Proposal to :</label>
-                            <input class="form-control inp" required="true" name="to" type="text" />
+                            <label class="col-form-label" for="recipient-name-2"> Proposal By :</label>
+                            <input class="form-control inp" required="true" name="cover_from" type="text" value="{{ "{Name}" }}" />
                         </div>
 
                         <div class="form-group">
-                            <label class="col-form-label" for="recipient-name-2"> Proposal from :</label>
-                            <input class="form-control inp" required="true" name="cover_from" type="text" />
+                            <label class="col-form-label" for="recipient-name-2"> Proposal of :</label>
+                            <input class="form-control inp" required="true" name="to" type="text" value="{{ "{Brand_name}" }}" />
                         </div>
 
                         <div class="form-group">

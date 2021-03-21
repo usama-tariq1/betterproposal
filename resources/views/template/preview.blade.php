@@ -24,6 +24,11 @@
             $cover = App\Covers::where('id' , $proposal->cover_id)->first();
             // dd($cover);
 
+            $proposal_activity = App\Proposal_activities::create([
+                "proposal_id" => $proposalid,
+                "action" => "Proposal Read"
+            ]);
+
         }
     @endphp
 
@@ -252,7 +257,14 @@
                         <span class="editor">
                             <span class="inp">
 
-                                {{@$cover->cover_for}}
+                                @if($cover->cover_for == "{Company_name}")
+                                    {{(App\proposal::where('id' , $proposal->id )->first())->company_name}}
+                                @else
+                                    {{$cover->cover_for}}
+
+                                @endif
+
+
                             </span>
                         </span>
                     </div>
@@ -260,14 +272,24 @@
                         Written by
                         <span class="editor">
                             <span class="inp">
-                                {{@$cover->cover_from}}
+                                @if($cover->cover_from == "{Name}")
+                                {{(App\User::where('id' , $proposal->user_id )->first())->name}}
+                                @else
+                                    {{$cover->cover_from}}
+
+                                @endif
                             </span>
                         </span>
 
-                        for
+                        at
                         <span class="editor">
                             <span class="inp">
-                                {{@$cover->cover_to}}
+                                @if($cover->cover_to == "{Brand_name}")
+                                {{(App\Brand::where('id' , $proposal->brand_id )->first())->brand_name}}
+                                @else
+                                    {{$cover->cover_to}}
+
+                                @endif
                             </span>
                         </span>
                     </div>

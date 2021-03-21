@@ -96,7 +96,7 @@
                                 <table class="table">
                                     <thead>
                                         <tr class="ul-widget6__tr--sticky-th">
-                                            <th scope="col">#</th>
+
                                             <th scope="col">Profile</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Status</th>
@@ -106,25 +106,32 @@
                                     </thead>
                                     <tbody>
                                         <!-- start tr-->
+                                        @foreach (App\User::where('role' , 2)->get() as $user )
+
                                         <tr>
-                                            <th scope="row">
-                                                <label class="checkbox checkbox-outline-info">
-                                                    <input type="checkbox" checked="" /><span class="checkmark"></span>
-                                                </label>
-                                            </th>
+
                                             <td><span>
                                                     <div class="ul-widget_user-card">
-                                                        <div class="ul-widget4__img"><img id="userDropdown"
+                                                        <div class="ul-widget4__img">
+                                                            @if($user->profile)
+                                                            <img id="userDropdown"
+                                                                src="{{url('/')}}/profileimage/{{$user->profile}}"
+                                                                alt="" />
+                                                            @else
+                                                            <img id="userDropdown"
                                                                 src="{{url('/')}}/dist-assets/images/faces/1.jpg"
-                                                                alt="" /></div>
+                                                                alt="" />
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                 </span></td>
-                                            <td>John</td>
+                                            <td>{{$user->name}}</td>
                                             <td><span
-                                                    class="badge badge-pill badge-outline-success p-2 m-1">Active</span>
+                                                    class="badge badge-pill badge-outline-{{$user->status == 1 ? 'success' : 'danger' }} p-2 m-1">
+                                                    {{$user->status == 1 ? 'Active' : 'Disabled' }} </span>
                                             </td>
                                             <td>
-                                                Some@gmail.com
+                                                {{$user->email}}
                                             </td>
                                             <td>
                                                 <button class="btn bg-white _r_btn border-0" type="button"
@@ -137,17 +144,18 @@
                                                     style="position: absolute; transform: translate3d(0px, 33px, 0px); top: 0px; left: 0px; will-change: transform;">
 
                                                     <div class="dropdown-divider"></div>
-                                                    <a
-                                                        class="dropdown-item ul-widget__link--font" href="#"><i
-                                                            class="i-Pen-3"></i> Update
+                                                    <a class="dropdown-item ul-widget__link--font"
+                                                        href="{{url('/')}}/admin/user/{{$user->id}}/0"><i
+                                                            class="i-Pen-3"></i> Disable
                                                     </a>
-                                                    <a
-                                                        class="dropdown-item ul-widget__link--font" href="#"><i
-                                                            class="i-Remove"></i> Delete
+                                                    <a class="dropdown-item ul-widget__link--font"
+                                                        href="{{url('/')}}/admin/user/{{$user->id}}/1"><i
+                                                            class="i-Remove"></i> Activate
                                                     </a>
                                                 </div>
                                             </td>
                                         </tr>
+                                        @endforeach
                                         <!-- end tr-->
 
 

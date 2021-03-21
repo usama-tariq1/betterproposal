@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminUserController extends Controller
@@ -15,6 +16,19 @@ class AdminUserController extends Controller
     {
         //
         return view('admin.user.index');
+    }
+
+
+    public function userstatus(Request $request){
+        // dd($request->all());
+
+        $user = User::where('id', $request->id)->first();
+        $user->status = $request->status;
+        $user->save();
+
+        return redirect()->back();
+
+
     }
 
     /**

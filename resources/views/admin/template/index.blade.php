@@ -16,15 +16,15 @@
             {{-- <li></li> --}}
         </ul>
 
-        {{-- <div class="btn btn-primary right" data-toggle="modal" data-target="#addnewtemplate"
+        <div class="btn btn-primary right" data-toggle="modal" data-target="#addnewtemplate"
             style="position:relative; right:0; margin-left: 55px;">
             Add New
-        </div> --}}
+        </div>
 
-        <div class="btn btn-primary right"
+        {{-- <div class="btn btn-primary right"
             style="position:relative; right:0; margin-left: 55px;">
             <a href="{{url('/')}}/template/add" style="color:white;"> Add New </a>
-        </div>
+        </div> --}}
 
 
     </div>
@@ -147,25 +147,28 @@
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">×</span></button>
             </div>
-            <div class="modal-body">
-                <form>
+            <form id="addtemplate" action="{{url('/')}}/template/add" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-group">
-                        <label class="col-form-label" for="recipient-name-2"> Name:</label>
-                        <input class="form-control" name="name" type="text" />
+                        <label for="">Name of Template</label>
+                        <input type="text" name="name" id="" class="form-control inp" errname="Template Name" required="true" placeholder="Name..">
+
+                    </div>
+
+                    <div class="form-group">
+                        {{-- <input type="hidden" name="brand_id" value="null"> --}}
+
                     </div>
 
 
 
-                    <div class="form-group">
-                        <label class="col-form-label" for="message-text-1">Description:</label>
-                        <textarea class="form-control" name="description"></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary" type="button">Submit</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

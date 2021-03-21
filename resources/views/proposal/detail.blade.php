@@ -128,10 +128,16 @@
                 <br>
 
                 <div class="entries-page page-1">
+
+                    @foreach (App\Proposal_activities::where('proposal_id' , $proposal_cache->proposal->id  )->get() as $activity )
+
                     <div class="timeline-block ">
-                        <div class="timeline-title ">Proposal Created</div><br>
-                        <div class="timeline-date">5th March 2021 at 09:26 by You</div>
+                        <div class="timeline-title "> {{$activity->action}} </div><br>
+                        <div class="timeline-date" > {{(Carbon\Carbon::parse($activity->timestamp))->toDayDateTimeString()}} </div>
                     </div>
+                    @endforeach
+
+
 
 
 

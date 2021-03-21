@@ -26,13 +26,13 @@
                 </a>
 
             </li>
-            <li class="nav-item" >
+            {{-- <li class="nav-item" >
                 <a class="nav-item-hold" href="{{url('/')}}/admin/proposals">
                     <i class="nav-icon i-Atom"></i>
                     <span class="nav-text">Proposals</span>
                 </a>
 
-            </li>
+            </li> --}}
 
 
 

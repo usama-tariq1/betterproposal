@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminCoverController;
 use App\Http\Controllers\AdminProposalController;
 use App\Http\Controllers\AdminTemplateController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TestController;
 
@@ -135,8 +136,8 @@ Route::prefix('/template')->middleware(IsUser::class)->group(function () {
 
     Route::get('/template/{id}',[TemplatePageController::class,'templateCreate'])->name('template.create');
 
-
-    // Route::get('/cover',[TemplatePageController::class,'cover'])->name('template.cover');
+    //  Setup Brand Before use
+    Route::post('/setup/brand/{id}',[TemplatePageController::class,'setupbrand']);
 
 
 
@@ -183,6 +184,11 @@ Route::prefix('/cover')->middleware(IsUser::class)->group(function () {
     // edit
     Route::get('/edit/{id}',[CoverController::class,'edit']);
     Route::post('/update/{id}',[CoverController::class,'update']);
+
+
+    // setup brand before use
+    Route::post('/setup/brand/{id}',[CoverController::class,'setupbrand']);
+
 
 
 
@@ -261,6 +267,8 @@ Route::prefix('/marketplace')->middleware(IsUser::class)->group(function () {
 
 Route::prefix('/admin')->middleware(IsAdmin::class)->group(function () {
 
+
+    // defaults
     Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin-dashboard');
     Route::get('/',[AdminController::class,'dashboard'])->name('admin-dashboard');
 
@@ -268,6 +276,9 @@ Route::prefix('/admin')->middleware(IsAdmin::class)->group(function () {
 
     // Users
     Route::resource('/users','AdminUserController');
+    Route::get('/user/{id}/{status}',[AdminUserController::class,'userstatus']);
+
+
 
 
     // Proposals

@@ -48,6 +48,24 @@ class CoverController extends Controller
 
     }
 
+    public function setupbrand(Request $request){
+        // dd($request->all());
+
+
+        $cover = Covers::where('id' , $request->id)->first();
+
+        $cover->name  = $request->name ;
+        $cover->brand_id = $request->brand_id;
+
+        $cover->save();
+
+
+        return redirect()->back();
+
+
+
+    }
+
     public static function edit(Request $request){
         // dd("hit");
 
@@ -96,7 +114,11 @@ class CoverController extends Controller
         return redirect()->back();
     }
 
-    public static function duplicate($coverid , $brandid){
+    public static function duplicate($coverid , $brandid =null){
+
+
+
+
         $original = Covers::where('id', $coverid)->first();
 
 
