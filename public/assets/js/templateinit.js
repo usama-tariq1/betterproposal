@@ -220,14 +220,19 @@ function addsection(){
                 sectionname : '',
                 blocks : Array()
             });
-            // console.log(template_config);
+            // console.log("hit add section");
 
             widgetholder.append(data.section);
-            $('body').find('#widgetholder .sectionblock').hide();
-            $('body #widgetholder').find(`.sectionblock[sectionid=${data.sectionid}]`).show();
+            $('body #templateholder ').find('#widgetholder .sectionblock').each(function(){
+                $(this).hide();
+            });
+
+   
+            $('body').find('#templateholder').find('#widgetholder').find(`.sectionblock[sectionid=${data.sectionid}]`).show();
+            
 
 
-            $('body').find('#template .widgetholder').show();
+            // $('body').find('#template .widgetholder').show();
             $('.addblankpage').hide();
 
 
@@ -540,7 +545,9 @@ function setblock(blocktype , blockid , block){
 
     // template_config.blocks[blockid] = newblock;
 
-    var section = $('body').find('#template').find('.widgetholder').find('.sectionblock:visible');
+    // var section = $('body').find('#template').find('.widgetholder').find('.sectionblock:visible');
+    var section = $('body').find('#template').find('.widgetholder').find(`.sectionblock[sectionid=${sectionid}]`);
+
 
 
     section.append(block);

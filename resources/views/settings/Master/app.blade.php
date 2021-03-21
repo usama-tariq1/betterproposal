@@ -28,9 +28,9 @@
             <div class="col-md-9">
                 <h3>Settings</h3>
             </div>
-            <div class="col-md-3 mb-5 create-products" style="display: none">
+            {{-- <div class="col-md-3 mb-5 create-products" style="display: none">
                 <button class="create" style="margin-left: 25%"><img src="{{asset('assets/images/add-icon1.png')}}" width="40px" alt="">Create New Proposal</button>
-            </div>
+            </div> --}}
         </div>
         <div class="row">
 

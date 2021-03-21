@@ -45,8 +45,16 @@
                             <img width="100%" src="{{url('/')}}/companylogo/{{$proposal->brand->company_logo}}"
                             class="logo p-3">
                         @else
-                            <img width="100%" src="https://betterproposals.io/2/img/layout/NEW_BlackYourLogo.png"
-                            class="logo p-3">
+                            @php
+                            $brand = App\Brand::where('id' , $template->brand_id)->first();
+                            @endphp
+                            @if(isset($brand))
+                                <img width="100%" src="{{url('/')}}/companylogo/{{$brand->company_logo}}"
+                                class="logo p-3">
+                            @else
+                                <img width="100%" src="https://betterproposals.io/2/img/layout/NEW_BlackYourLogo.png"
+                                class="logo p-3">
+                            @endif
                         @endif
                     </div>
 
@@ -198,7 +206,7 @@
                 @if($cover->cover)
                     <img src="{{url('/')}}/covers/{{$cover->cover}}" class="coverimage" alt="">
                 @else
-                    <img src="" class="coverimage" alt="">
+
 
                 @endif
             </div>
@@ -232,14 +240,14 @@
                     </div> --}}
 
 
-                    <div class="logo">
-                        @if($cover->cover )
+                    <div class="logo" style="margin:0 auto; display:block;width:fit-content; margin-top:120px;">
+                        @if($proposal->brand->company_logo )
                             <img src="{{url('/')}}/companylogo/{{$proposal->brand->company_logo}}" style="filter: none; background-color:rgba(255, 255, 255, 0) !important;" class="img active">
                         @else
                             <img src="{{url('/')}}/companylogo/default.png" class="img default">
                         @endif
                     </div>
-                    <div class="lineone">
+                    <div class="lineone" style="text-align:center;">
                         Proposal for
                         <span class="editor">
                             <span class="inp">
@@ -248,7 +256,7 @@
                             </span>
                         </span>
                     </div>
-                    <div class="linetwo">
+                    <div class="linetwo" style="text-align:center;">
                         Written by
                         <span class="editor">
                             <span class="inp">
@@ -266,7 +274,7 @@
 
 
                     <div class="btnholder">
-                        <button  class="btn btn-bar btn-primary readproposal">
+                        <button  class="btn btn-bar btn-primary readproposal" style="margin:0 auto; display:block;">
                             Read Your Proposal
                         </button>
                     </div>

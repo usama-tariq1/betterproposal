@@ -164,7 +164,7 @@
                                 <div class="template" id="template" templateid="{{$template->code}}">
 
 
-                                    <div class="widgetholder">
+                                    <div class="widgetholder" id="widgetholder">
                                         {!! $templateconfig->editable !!}
 
                                     </div>

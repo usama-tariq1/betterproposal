@@ -70,6 +70,17 @@
 
                         </div>
 
+                        <div class="form-group">
+                            <label for="">Brand</label>
+                            <select name="brand_id" id="" class="form-control inp" required="true" errname="Brand">
+                                <option value=""> Select Brand</option>
+                                @foreach (App\Brand::where("user_id" , Auth::user()->id)->get() as $brand)
+                                    <option value="{{$brand->id}}">{{$brand->brand_name}}</option>
+                                @endforeach
+                            </select>
+
+                        </div>
+
                     </form>
                 </div>
                 <div class="modal-footer">

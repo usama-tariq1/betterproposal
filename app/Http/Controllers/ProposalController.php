@@ -142,7 +142,7 @@ class ProposalController extends Controller
 
 
         if($request->template_id == -1){
-            $template_id = self::createtemplate();
+            $template_id = self::createtemplate($request->brand_id);
 
 
 
@@ -151,7 +151,7 @@ class ProposalController extends Controller
         else{
             // $template_id = 1;
             // dd('Underconstruction');
-            $template_id = self::duplicatetemplate($request->template_id);
+            $template_id = self::duplicatetemplate($request->template_id , $request->brand_id);
         }
 
         if($request->cover_id == -1){
@@ -162,7 +162,8 @@ class ProposalController extends Controller
             $cover = Covers::create([
                 "name" => $request->proposal_name,
 
-                "user_id" => Auth::user()->id
+                "user_id" => Auth::user()->id,
+                "brand_id" => $request->brand_id
             ]);
 
 
@@ -172,7 +173,7 @@ class ProposalController extends Controller
         }
         else{
             // $cover_id = $request->cover_id;
-            $cover_id = CoverController::duplicate($request->cover_id);
+            $cover_id = CoverController::duplicate($request->cover_id , $request->brand_id);
         }
 
 
@@ -475,7 +476,7 @@ class ProposalController extends Controller
     }
 
 
-    public static function createtemplate(){
+    public static function createtemplate($brandid){
         $code = self::RandomString();
         $template= Template::create([
             'user_id' => Auth::user()->id,
@@ -485,6 +486,7 @@ class ProposalController extends Controller
             'config' => '.',
             'preview' => ".",
             'editable' => '.',
+            'brand_id' => $brandid
         ]);
         // $path = '/uploads/images';
         // $file->move();
@@ -501,7 +503,7 @@ class ProposalController extends Controller
     }
 
 
-    public static function duplicatetemplate($template_id){
+    public static function duplicatetemplate($template_id ,$brandid){
         $code = self::RandomString();
         $template= Template::create([
             'user_id' => Auth::user()->id,
@@ -511,6 +513,7 @@ class ProposalController extends Controller
             'config' => '.',
             'preview' => ".",
             'editable' => '.',
+            "brand_id" => $brandid
         ]);
         // $path = '/uploads/images';
         // $file->move();

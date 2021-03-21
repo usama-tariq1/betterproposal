@@ -35,6 +35,7 @@
                     <tbody id="table">
                         @forelse(App\proposal_cache::where('status', '=', 4)->where('user_id' , Auth::user()->id)->with('proposal')->with('contact')->get() as $proposal_cache)
                         {{-- {{dd($proposal_cache)}} --}}
+                        @if($proposal_cache->proposal)
                         <tr>
                             <td class="pl-5">
                                 <a href="{{url('/')}}/proposals/detail/{{$proposal_cache->proposal->id}}">
@@ -57,6 +58,7 @@
 
                             </td>
                         </tr>
+                        @endif
 
                         @empty
 

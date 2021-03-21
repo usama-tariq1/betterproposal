@@ -16,6 +16,13 @@
 <link rel="stylesheet" href="{{url('/')}}/assets/css/detailpage.css">
 
 <style>
+    .dropdown-content-settings{
+        top:0px;
+
+    }
+</style>
+
+<style>
 
 
 </style>
@@ -282,6 +289,14 @@
 
     $(document).ready(function () {
         $('body').css('background-color', '#e4e4e4 !important');
+
+        $('.dropdown-content-settings').css({
+            "top": "0px"
+        });
+
+        $('.dropdown-content-settings').find('a').css({
+            "padding-top": "0px"
+        });
 
 
 

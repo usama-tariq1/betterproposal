@@ -1,6 +1,9 @@
 @extends('layouts.Master.app')
 
 @section('content')
+@php
+    $brand = App\Brand::where("user_id" , Auth::user()->id)->first();
+@endphp
 <div class="top-section" style="background-color: #21252f;">
    <div class="container">
       <div class="row">
@@ -14,10 +17,28 @@
                <div class="card-body">
                  <h5 class="card-title top-card-heading">Setup Brand</h5>
                  <p class="p-3 card-text top-card-txt">Quickly Setup you brand . It will appear on all your future proposals.</p>
-                 <img class="card-img-top rounded-circle top-card-img" src="{{asset('assets/images/onboarding-logo-todo.png')}}" alt="Card image cap">
+
+
+
+                @if(!$brand)
+                    <img class="card-img-top rounded-circle top-card-img" src="{{asset('assets/images/onboarding-logo-todo.png')}}" alt="Card image cap">
+
+                @else
+
+                    <img class="card-img-top rounded-circle top-card-img" src="{{asset('assets/images/greencheck.png')}}" alt="Card image cap">
+
+                @endif
+
+
 
                </div>
-               <a href="{{url('/')}}/settings/brands/add" style="width: 50%" class="btn pl-5 pr-5 p-2 mb-5 mr-auto ml-auto create btn-primary">LET'S DO IT</a>
+                @if(!$brand)
+                    <a href="{{url('/')}}/settings/brands/add" style="width: 50%" class="btn pl-5 pr-5 p-2 mb-5 mr-auto ml-auto create btn-primary">LET'S DO IT</a>
+
+
+
+                @endif
+                {{-- <a href="{{url('/')}}/settings/brands/add" style="width: 50%" class="btn pl-5 pr-5 p-2 mb-5 mr-auto ml-auto create btn-primary">LET'S DO IT</a> --}}
              </div>
          </div>
          <div class="col-md-4">
@@ -25,14 +46,26 @@
                <div class="card-body">
                  <h5 class="card-title top-card-heading">Upload logo</h5>
                  <p class="p-3 card-text top-card-txt">Getting your logo uploaded is the first step in creating world-class proposals. It will appear on all your future proposals.</p>
-                 <img class="card-img-top rounded-circle top-card-img" src="{{asset('assets/images/onboarding-logo-todo.png')}}" alt="Card image cap">
+
+                 @if(!$brand)
+                    <img class="card-img-top rounded-circle top-card-img" src="{{asset('assets/images/onboarding-logo-todo.png')}}" alt="Card image cap">
+
+                 @else
+                    @if($brand->company_logo)
+                        <img class="card-img-top rounded-circle top-card-img" src="{{asset('assets/images/greencheck.png')}}" alt="Card image cap">
+                    @else
+                        <img class="card-img-top rounded-circle top-card-img" src="{{asset('assets/images/onboarding-logo-todo.png')}}" alt="Card image cap">
+
+                    @endif
+                 @endif
+
 
                 </div>
-                @php
-                    $brand = App\Brand::where("user_id" , Auth::user()->id)->first();
-                @endphp
+
                 @if($brand)
-                    <a href="/settings/brands/{{$brand->id}}/sidebar" style="width: 50%" class="btn pl-5 pr-5 p-2 mb-5 mr-auto ml-auto create btn-primary">Add LOGO</a>
+                    @if(!$brand->company_logo)
+                        <a href="/settings/brands/{{$brand->id}}/sidebar" style="width: 50%" class="btn pl-5 pr-5 p-2 mb-5 mr-auto ml-auto create btn-primary">Add LOGO</a>
+                    @endif
                 @else
                     <a href="{{url('/')}}/settings/brands/add" style="width: 50%" class="btn pl-5 pr-5 p-2 mb-5 mr-auto ml-auto create btn-primary">Create A brand First</a>
 

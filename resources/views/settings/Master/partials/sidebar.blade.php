@@ -34,10 +34,10 @@
 
     </a>
 
-    <a href="/settings/brands" class="no-ul">
+    {{-- <a href="/settings/brands" class="no-ul">
         <div class="settings-item">All Brand</div>
 
-    </a>
+    </a> --}}
 
 
     @foreach ( App\Brand::Where('user_id' , Auth::user()->id)->get() as $brand )
@@ -55,18 +55,18 @@
 {{-- Proposals --}}
 <div class="settings-cat proposals">Proposals</div>
     <!--<a href="account-doctypes" class="no-ul"><div class="settings-item">Document Types</div></a>-->
-    <a href="account-products" class="no-ul">
+    <a href="/product/all" class="no-ul">
         <div class="settings-item">Products and Services</div>
     </a>
-    <a href="proposal-ai" class="no-ul">
+    {{-- <a href="proposal-ai" class="no-ul">
         <div class="settings-item">Proposal AI</div>
     </a>
     <a href="../integrations" class="no-ul">
         <div class="settings-item">Integrations</div>
-    </a>
+    </a> --}}
 
 
-
+{{--
 
 <div class="settings-cat admin">Admin</div>
     <a href="account-company" class="no-ul">
@@ -86,9 +86,9 @@
     </a>
     <a href="account-invoices" class="no-ul">
         <div class="settings-item">Invoices</div>
-    </a>
+    </a> --}}
 
-
+{{--
 <div class="settings-cat people">Users and Teams</div>
     <a href="../upgrade/teams" class="no-ul">
         <div class="settings-item">Teams</div>
@@ -98,16 +98,16 @@
     </a>
     <a href="account-permissions" class="no-ul">
         <div class="settings-item">Permissions</div>
+    </a> --}}
+
+
+
+<div class="settings-cat profile"> <a href="{{url('/')}}/profile"> Profile </a> </div>
+
+    <a href="{{url('/')}}/profile" class="no-ul">
+        <div class="settings-item">Change Name Or Profile</div>
     </a>
-
-
-
-<div class="settings-cat profile">Profile</div>
-
-    <a href="profile-name" class="no-ul">
-        <div class="settings-item">Change my name and email</div>
-    </a>
-    <a href="profile-password" class="no-ul">
+    {{-- <a href="profile-password" class="no-ul">
         <div class="settings-item">Change password</div>
     </a>
     <a href="profile-signature" class="no-ul">
@@ -115,4 +115,4 @@
     </a>
     <a href="profile-notifications" class="no-ul">
         <div class="settings-item">Email Notifications</div>
-    </a>
+    </a> --}}

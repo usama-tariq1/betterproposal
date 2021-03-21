@@ -244,6 +244,8 @@ class TemplatePageController extends Controller
 
         $data = json_decode($jsonString);
 
+        $template = Template::where('code' , $request->code)->first();
+
 
         // dd($data);
 
@@ -255,6 +257,7 @@ class TemplatePageController extends Controller
 
         return view("template.preview")->with([
             "data" => $data,
+            "template" => $template
         ]);
 
 

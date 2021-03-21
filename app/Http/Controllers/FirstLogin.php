@@ -92,7 +92,7 @@ class FirstLogin extends Controller
 
         $user = User::where('id' , Auth::user()->id)->first();
 
-        $user->first_login = 0;
+        $user->first_login = 2;
 
         $user->save();
 

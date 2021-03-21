@@ -33,7 +33,8 @@ class CoverController extends Controller
         $cover = Covers::create([
             "name" => $request->name,
 
-            "user_id" => Auth::user()->id
+            "user_id" => Auth::user()->id,
+            "brand_id" => $request->brand_id
         ]);
 
 
@@ -95,7 +96,7 @@ class CoverController extends Controller
         return redirect()->back();
     }
 
-    public static function duplicate($coverid){
+    public static function duplicate($coverid , $brandid){
         $original = Covers::where('id', $coverid)->first();
 
 
@@ -105,7 +106,8 @@ class CoverController extends Controller
             "cover_to" => $original->cover_to,
             "cover_from" => $original->cover_from,
             "cover" => $original->cover,
-            "user_id" => Auth::user()->id
+            "user_id" => Auth::user()->id,
+            "brand_id" => $brandid
         ]);
 
 

@@ -2,19 +2,28 @@
 
 console.log('Template Build Initialized !');
 
-var $baseurl = ``;
 
 var clippaths = {
     none : "none",
     comb : "polygon(11% 100%, 24% 90%, 38% 100%, 51% 90%, 65% 100%, 79% 90%, 94% 99%, 100% 89%, 100% 53%, 100% 0, 0 0, 0 90%)",
-    bottomsnap : "polygon(0 0, 100% 0, 100% 83%, 0% 100%)"
+    bottomsnap : "polygon(0 0, 100% 0, 100% 83%, 0% 100%)",
+    triangle : "polygon(0 0, 100% 0, 100% 59%, 50% 100%, 0 58%)",
+    rombus : "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)",
+    strip: "polygon(0 0, 57% 0, 100% 100%, 43% 100%)"
 }
 
 var cliparray = [
     "none" ,
     "comb" ,
     "bottomsnap" ,
+    "triangle",
+    "rombus",
+    "strip"
 ];
+
+
+var baseurl = ``;
+
 
 
 

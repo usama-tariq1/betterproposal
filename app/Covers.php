@@ -17,7 +17,8 @@ class Covers extends Model
         "cover_from",
         "cover_to",
         "cover_for",
-        "cover"
+        "cover",
+        "brand_id"
 
 
     ];

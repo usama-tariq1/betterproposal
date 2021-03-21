@@ -70,11 +70,11 @@
 
 
                     <div class="logo">
-                        {{-- @if($cover->cover )
-                            <img src="{{url('/')}}/companylogo/{{$cover->company_logo}}" class="img active">
-                        @else --}}
+                        @if($cover->brand_id )
+                            <img src="{{url('/')}}/companylogo/{{(App\Brand::where('id' , $cover->brand_id)->first())->company_logo}}" class="img active">
+                        @else
                             <img src="{{url('/')}}/companylogo/default.png" class="img default">
-                        {{-- @endif --}}
+                        @endif
                     </div>
                     <div class="lineone">
                         Proposal for

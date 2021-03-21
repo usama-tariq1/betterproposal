@@ -29,6 +29,10 @@ class IsUser
                 return redirect('/firstlogin');
 
             }
+            if(Auth::user()->first_login == 2){
+                return redirect('/paymentsetup');
+
+            }
         }
 
         if(!Auth::user()){

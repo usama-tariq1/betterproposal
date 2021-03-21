@@ -20,6 +20,8 @@ use App\Http\Middleware\IsAdmin;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Marketplace;
+use App\Http\Controllers\PaymentController;
+
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\ProfileController;
@@ -64,6 +66,13 @@ Route::prefix('/')->group(function () {
         // Route::get('/details', [FirstLogin::class, 'details']);
     });
 
+    Route::prefix('/paymentsetup')->group(function () {
+        Route::get('/', [PaymentController::class, 'setupindex']);
+        Route::post('/checkout', [PaymentController::class, 'initialcheckout']);
+
+
+    });
+
 
 
     Route::get('/test', [TestController::class, 'index']);
@@ -76,6 +85,7 @@ Route::prefix('/')->group(function () {
 Route::prefix('/profile')->middleware(IsUser::class)->group(function () {
 
     Route::get('/', [ProfileController::class, 'index']);
+    Route::post('/update', [ProfileController::class, 'update']);
 
 
 
@@ -85,6 +95,15 @@ Route::prefix('/profile')->middleware(IsUser::class)->group(function () {
 
 // product
 Route::prefix('/product')->middleware(IsUser::class)->group(function () {
+
+    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/all', [ProductController::class, 'index']);
+    Route::post('/add', [ProductController::class, 'add']);
+    Route::get('/delete/{id}', [ProductController::class, 'delete']);
+    Route::post('/update/{id}', [ProductController::class, 'update']);
+
+
+
     // api reserved
     Route::get('/add/{name}', [ProductController::class, 'addproduct']);
 
@@ -243,6 +262,8 @@ Route::prefix('/marketplace')->middleware(IsUser::class)->group(function () {
 Route::prefix('/admin')->middleware(IsAdmin::class)->group(function () {
 
     Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin-dashboard');
+    Route::get('/',[AdminController::class,'dashboard'])->name('admin-dashboard');
+
 
 
     // Users

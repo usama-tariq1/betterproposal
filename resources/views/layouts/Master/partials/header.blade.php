@@ -52,8 +52,14 @@
                 </li>
             </ul>
             <div class="dropdown-settings" >
-                <li class="header-hotlink header-hotlink-image"
-                    style="background-image: url({{ asset('assets/images/nav-profile-blank.png') }}) ; margin:0px;"></li>
+                @if(Auth::user()->profile)
+                    <li class="header-hotlink header-hotlink-image"
+                        style="background-image: url({{url('/') }}/profileimage/{{Auth::user()->profile}}) ; margin:0px;"></li>
+                @else
+                    <li class="header-hotlink header-hotlink-image"
+                        style="background-image: url({{ asset('assets/images/nav-profile-blank.png') }}) ; margin:0px;"></li>
+                @endif
+
                 <div class="dropdown-content-settings" style="top: 64px;">
                     <div class="col-md-12 profile" style="padding: 0px;
 
@@ -64,23 +70,30 @@
 
 
                     " >
-                        <div class="profile-image"
-                            style="background-image: url({{ asset('assets/images/nav-profile-blank.png') }}) ; margin-top: -7px;">
-                        </div>
+                        @if(Auth::user()->profile)
+                            <div class="profile-image"
+                                style="background-image: url({{url('/') }}/profileimage/{{Auth::user()->profile}}) ; margin-top: -7px;">
+                            </div>
+                        @else
+                            <div class="profile-image"
+                                style="background-image: url({{ asset('assets/images/nav-profile-blank.png') }}) ; margin-top: -7px;">
+                            </div>
+                        @endif
+
                         <div class="profile-name" style="margin-top: 4px; font-size:18px;"> {{Auth::user()->name}} </div>
                     </div>
                     <div class="col-md-12"  >
-                        <a style="width: 100%; display: block; margin-top:10px;" href="/2/settings/profile-name">My account</a>
-                        <a style="width: 100%; display: block;" href="/integrations/">Integrations</a>
-                        <a style="width: 100%; display: block;" href="/templates/marketplace">Template Marketplace</a>
+                        <a style="width: 100%; display: block; margin-top:10px;" href="{{url('/')}}/profile">My account</a>
+                        {{-- <a style="width: 100%; display: block;" href="/integrations/">Integrations</a> --}}
+                        <a style="width: 100%; display: block;" href="{{url('/')}}/marketplace/templates">Template Marketplace</a>
                         <a style="width: 100%; display: block;" href="/settings/">Settings</a>
                     </div>
                     <div class="col-md-12">
-                        <a style="width: 100%; display: block;" href="/upgrade">Upgrade</a>
+                        {{-- <a style="width: 100%; display: block;" href="/upgrade">Upgrade</a> --}}
                         <!-- session-app -->
-                        <div class="alert-count" style="margin-left: 10px;">7</div><a href="/2/learn/">Learning centre</a>
-                        <a style="width: 100%; display: block;" href="/help" target="_blank">Help</a>
-                        <a style="width: 100%; display: block;" href="/logout">Logout</a>
+                        <div class="alert-count" style="margin-left: 10px;">7</div><a href="/">Learning centre</a>
+                        <a style="width: 100%; display: block;" href="/" target="_blank">Help</a>
+                        <a style="width: 100%; display: block;" href="{{url('/')}}/logout">Logout</a>
                     </div>
                 </div>
             </div>
