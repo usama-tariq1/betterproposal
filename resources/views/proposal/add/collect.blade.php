@@ -9,7 +9,7 @@ $brand = $proposal->brand;
 $brand_settings =$proposal->brand->brand_settings;
 
 if($proposal->contact_id){
-    $contact = App\contact::where('id' , $proposal->contact_id )->first();
+$contact = App\contact::where('id' , $proposal->contact_id )->first();
 
 }
 
@@ -21,7 +21,8 @@ if($proposal->contact_id){
 
 @endphp
 
-<script src="https://cdn.tiny.cloud/1/4e17hcsz7xaiwpc4kl341dgdyg51t6izulk882z4k4af675c/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/4e17hcsz7xaiwpc4kl341dgdyg51t6izulk882z4k4af675c/tinymce/5/tinymce.min.js"
+    referrerpolicy="origin"></script>
 
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
@@ -49,7 +50,7 @@ if($proposal->contact_id){
         cursor: pointer;
     }
 
-    .inp{
+    .inp {
         margin-bottom: 20px;
         width: 50%;
 
@@ -58,7 +59,7 @@ if($proposal->contact_id){
 </style>
 
 
-<div class="" style="position:fixed; top: 0 ; left:0; width: 100%; z-index: 200;" >
+<div class="" style="position:fixed; top: 0 ; left:0; width: 100%; z-index: 200;">
     <!---------------------------navbar start-------------------------------->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a id="cancel-btn" href="{{ url('/template') }}" class="btn start-head-btn" style="display: block;">Back</a>
@@ -67,12 +68,12 @@ if($proposal->contact_id){
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 
-            <ul class="navbar-nav mr-auto ml-auto"
-                style="position: relative; left: 26%; transform: translateX(-50%);">
+            <ul class="navbar-nav mr-auto ml-auto" style="position: relative; left: 26%; transform: translateX(-50%);">
                 <style>
-                    .activenav{
+                    .activenav {
                         font-weight: 700;
                     }
+
                 </style>
                 <li class="nav-item  ">
                     <p class="">Details ></p>
@@ -102,108 +103,197 @@ if($proposal->contact_id){
 
 
 <form id="proposalform" action="{{url('/')}}/proposals/cache/{{$proposal->id}}" method="post">
-    <input type="hidden" name="_token" value="{{csrf_token()}}" >
-<section id="section2" style="margin-top: 80px;" class="section " >
+    <input type="hidden" name="_token" value="{{csrf_token()}}">
+    <section id="section2" style="margin-top: 80px;" class="section ">
 
 
-    <div class="container">
-        <div class="col-md-12">
-            <div class="details-div text-center m-5">
-                <div class="detail-form p-5">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="details-div text-center m-5">
+                    <div class="detail-form p-5">
 
-                    <div class="form-group">
-                        <div class="form-group" style="text-align:left;">
-                            <label for="option1">This Proposal will come from</label>
-                            <strong>{{$brand->brand_name}}</strong>( {{$brand_settings->brand_email}} )
+                        <div class="form-group">
+                            <div class="form-group" style="text-align:left;">
+                                <label for="option1">This Proposal will come from</label>
+                                <strong>{{$brand->brand_name}}</strong>( {{$brand_settings->brand_email}} )
+                            </div>
+
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <div class="container">
-        <div class="col-md-12">
-            <div class="details-div text-center m-5">
-                <div class="detail-form p-5">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="details-div text-center m-5">
+                    <div class="detail-form p-5">
 
-                    <div class="form-group">
-                        <div class="form-group" style="text-align:left;">
-                            <label for="option1">Who would you like to send your Proposal to?</label>
-                            <input type="text" name="firstname" class="form-control inp" required="true" placeholder="First Name" value="{{@$contact->firstname}}">
-                            <input type="text" name="lastname" class="form-control inp" required="true" placeholder="Last Name" value="{{@$contact->lastname}}">
-                            <input type="text" name="email" class="form-control inp" required="true" placeholder="email" value="{{@$contact->email}}">
+                        <div class="form-group">
+                            <div class="form-group" style="text-align:left;">
+                                <label for="option1">Who would you like to send your Proposal to?</label>
+                                <input type="text" name="firstname" class="form-control inp" required="true"
+                                    placeholder="First Name" value="{{@$contact->firstname}}">
+                                <input type="text" name="lastname" class="form-control inp" required="true"
+                                    placeholder="Last Name" value="{{@$contact->lastname}}">
+                                <input type="text" name="email" class="form-control inp" required="true"
+                                    placeholder="email" value="{{@$contact->email}}">
+                            </div>
+
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="col-md-12">
-            <div class="details-div text-center m-5">
-                <div class="detail-form p-5" style="text-align:left;">
-                    <label for="option1">Write Your Email</label>
+        <div class="container">
+            <div class="col-md-12">
+                <div class="details-div text-center m-5">
+                    <div class="detail-form p-5" style="text-align:left;">
+                        <label for="option1">Write Your Email</label>
 
-                    <label for="">Email Subject</label>
+                        <label for="">Email Subject</label>
 
-                    <input type="text" name="email_title" class="form-control inp" required="true" placeholder="email" value="{{@$brand_settings->email_title}}">
-                    <input type="text" name="email_template" id="emailtemplate" class="form-control" style="display:none;">
-                    <div class="cache" style="display: none;">
+                        <input type="text" name="email_title" class="form-control inp" required="true"
+                            placeholder="email" value="{{@$brand_settings->email_title}}">
+                        <input type="text" name="email_template" id="emailtemplate" class="form-control"
+                            style="display:none;">
+                        <div class="cache" style="display: none;">
 
-                    </div>
-
-                    <div class="emailpreview">
-                        <div class="title">
-                            HOW YOUR EMAIL WILL LOOK
                         </div>
 
+                        <div class="emailpreview">
+                            <div class="title">
+                                HOW YOUR EMAIL WILL LOOK
+                            </div>
 
-                        <div class="viewholder">
-                            <div class="view">
-                                <table class="table">
-                                    <tr>
-                                        <td>
-                                            @if($brand->company_logo )
-                                                <img src="{{url('/')}}/companylogo/{{$brand->company_logo}}" class="logodisplay" style="width:200px">
-                                            @else
-                                                <img src="{{url('/')}}/companylogo/default.png" class="logodisplay" style="width:200px">
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    <br><br><br>
-                                    <tr>
-                                        <td>
-                                            <div class="bodyholder">
-                                                <div class="emailmsg tinymce-body ">
-                                                    {{ $brand_settings->email_message == '' ? 'Start Typing your message' : $brand_settings->email_message }}
+
+                            <style>
+                                .view {
+                                    border: 8px solid #7B8290;
+                                    border-radius: 7px;
+                                    padding: 20px;
+                                }
+
+                                .view .table {
+                                    width: 100%;
+                                    outline: none;
+                                }
+
+                                .view .table tr {
+                                    border: 0px;
+                                }
+
+                                .view .table tr td {
+                                    border: 0px;
+                                }
+
+                                .view .table tr td .bodyholder {
+                                    border: 1px solid lightgray;
+                                    border-radius: 7px;
+                                    margin-top: 20px;
+                                    padding: 20px;
+                                }
+
+                                .view .table tr td .bodyholder .emailmsg {
+                                    font-size: 18px;
+                                }
+
+                                .view .table tr td .bodyholder .emailbutton {
+                                    display: block;
+                                    width: fit-content;
+                                    background-color: #21252F;
+                                    text-align: center;
+                                    color: #FFF;
+                                    padding-top: 15px;
+                                    padding-right: 15px;
+                                    padding-bottom: 15px;
+                                    padding-left: 15px;
+                                    border-radius: 6px;
+                                    margin-top: 25px;
+                                    font-size: 17px;
+                                    text-transform: uppercase;
+                                }
+
+                            </style>
+
+                            <div class="viewholder">
+                                <div class="view" style="
+                                    border: 8px solid #7B8290;
+                                    border-radius: 7px;
+                                    padding: 20px;
+                                ">
+                                    <table class="table" style="
+                                        width: 100%;
+                                        outline: none;
+                                    ">
+                                        <tr style="
+                                            border: 0px;
+                                        ">
+                                            <td style="
+                                                border: 0px;
+                                            ">
+                                                @if($brand->company_logo )
+                                                <img src="{{url('/')}}/companylogo/{{$brand->company_logo}}"
+                                                    class="logodisplay" style="width:200px">
+                                                @else
+                                                <img src="{{url('/')}}/companylogo/default.png" class="logodisplay"
+                                                    style="width:200px">
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        <br><br><br>
+                                        <tr style="
+                                            border: 0px;
+                                        ">
+                                            <td style="border: 0px;">
+                                                <div class="bodyholder" style="
+                                                    border: 1px solid lightgray;
+                                                    border-radius: 7px;
+                                                    margin-top: 20px;
+                                                    padding: 20px;
+                                                ">
+                                                    <div class="emailmsg tinymce-body " style="font-size: 18px;">
+                                                        {{ $brand_settings->email_message == '' ? 'Start Typing your message' : $brand_settings->email_message }}
+                                                    </div>
+
+                                                    <br>
+                                                    <br>
+
+                                                    <a href="{{url('/')}}/preview/{{$proposal->template->code}}?proposalid={{$proposal->id}}"
+                                                        class="emailbutton" style="
+                                                            display: block;
+                                                            width: fit-content;
+                                                            background-color: #21252F;
+                                                            text-align: center;
+                                                            color: #FFF;
+                                                            padding-top: 15px;
+                                                            padding-right: 15px;
+                                                            padding-bottom: 15px;
+                                                            padding-left: 15px;
+                                                            border-radius: 6px;
+                                                            margin-top: 25px;
+                                                            font-size: 17px;
+                                                            text-transform: uppercase;
+                                                        ">
+                                                        {{$brand_settings->email_button}}
+                                                    </a>
                                                 </div>
-
-                                                <br>
-                                                <br>
-
-                                                <a href="{{url('/')}}/preview/{{$proposal->template->code}}?proposalid={{$proposal->id}}"  class="emailbutton">
-                                                    {{$brand_settings->email_button}}
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
 
-</section>
+    </section>
 
 </form>
 
@@ -212,7 +302,7 @@ if($proposal->contact_id){
 <script src="{{url('/')}}/assets/js/validateform.js"></script>
 
 
-<script type="text/javascript" defer >
+<script type="text/javascript" defer>
     function cacheit(formid) {
         var validation = validateform(`#${formid}`);
 
@@ -228,29 +318,26 @@ if($proposal->contact_id){
     }
 
     cachetemplate();
-    $(document).ready(function(){
-       $('.emailmsg').focusout(function(){
+    $(document).ready(function () {
+        $('.emailmsg').focusout(function () {
             cachetemplate();
-       });
+        });
     });
 
-    function cachetemplate(){
+    function cachetemplate() {
         var emailtemplate = $('.view').html();
         $('.cache').html(emailtemplate);
-        $('.cache').find('.emailmsg').attr('contenteditable' , false);
+        $('.cache').find('.emailmsg').attr('contenteditable', false);
 
         $('#emailtemplate').val(`${$('.cache').html()}`);
 
     }
-
-
 
 </script>
 
 
 
 <script defer>
-
     console.log('hit');
 
     // var nextbtn = $('.nextbtn');
@@ -263,52 +350,49 @@ if($proposal->contact_id){
 
 
     var emailHeaderConfig = {
-    selector: '.tinymce-heading',
-    menubar: false,
-    inline: true,
+        selector: '.tinymce-heading',
+        menubar: false,
+        inline: true,
 
-    plugins: [
-        'lists',
-        // 'powerpaste',
-        // 'autolink'
-    ],
-    toolbar: 'undo redo | bold italic underline',
-    valid_elements: 'strong,em,span[style],a[href]',
-    valid_styles: {
-        '*': 'font-size,font-family,color,text-decoration,text-align'
-    },
-    // powerpaste_word_import: 'clean',
-    // powerpaste_html_import: 'clean',
+        plugins: [
+            'lists',
+            // 'powerpaste',
+            // 'autolink'
+        ],
+        toolbar: 'undo redo | bold italic underline',
+        valid_elements: 'strong,em,span[style],a[href]',
+        valid_styles: {
+            '*': 'font-size,font-family,color,text-decoration,text-align'
+        },
+        // powerpaste_word_import: 'clean',
+        // powerpaste_html_import: 'clean',
     };
 
     var emailBodyConfig = {
-    selector: '.tinymce-body',
-    menubar: false,
-    inline: true,
-    // plugins: [
-    //     'link',
-    //     'lists',
-    //     'powerpaste',
-    //     'autolink',
-    //     'tinymcespellchecker'
-    // ],
-    toolbar: [
-        'undo redo | bold italic underline | fontselect fontsizeselect',
-        'forecolor backcolor | alignleft aligncenter alignright alignfull | numlist bullist outdent indent'
-    ],
-    valid_elements: 'p[style],strong,em,span[style],a[href],ul,ol,li',
-    valid_styles: {
-        '*': 'font-size,font-family,color,text-decoration,text-align'
-    },
-    // powerpaste_word_import: 'clean',
-    // powerpaste_html_import: 'clean',
+        selector: '.tinymce-body',
+        menubar: false,
+        inline: true,
+        // plugins: [
+        //     'link',
+        //     'lists',
+        //     'powerpaste',
+        //     'autolink',
+        //     'tinymcespellchecker'
+        // ],
+        toolbar: [
+            'undo redo | bold italic underline | fontselect fontsizeselect',
+            'forecolor backcolor | alignleft aligncenter alignright alignfull | numlist bullist outdent indent'
+        ],
+        valid_elements: 'p[style],strong,em,span[style],a[href],ul,ol,li',
+        valid_styles: {
+            '*': 'font-size,font-family,color,text-decoration,text-align'
+        },
+        // powerpaste_word_import: 'clean',
+        // powerpaste_html_import: 'clean',
     };
 
     tinymce.init(emailHeaderConfig);
     tinymce.init(emailBodyConfig);
-
-
-
 
 </script>
 

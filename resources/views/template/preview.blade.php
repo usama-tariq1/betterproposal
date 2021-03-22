@@ -70,11 +70,11 @@
                     </div>
 
 
-                    @if(isset($_GET['proposalid']))
+                    {{-- @if(isset($_GET['proposalid']))
                     <a href="{{url('/')}}/proposal/pdf/{{$proposal->id}}" target="_blank" class="btn btn-primary">
                         Download as Pdf
                     </a>
-                    @endif
+                    @endif --}}
 
                     <img src="" class="signaturedisplay" style="width: 80%; margin:0 auto; margin-top:20px;" alt="">
                     <div class="signaturename" style="text-align:center;  width:80%; margin:0 auto;"  ></div>

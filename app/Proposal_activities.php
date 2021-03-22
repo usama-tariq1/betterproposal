@@ -20,5 +20,10 @@ class Proposal_activities extends Model
     ];
 
 
+    public function proposal(){
+        return $this->belongsTo(Proposal::class);
+    }
+
+
 
 }
